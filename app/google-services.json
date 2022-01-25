@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "406347263927",
+    "project_id": "exhaustwear-b2e14",
+    "storage_bucket": "exhaustwear-b2e14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406347263927:android:13bbab42bc37fa4981c232",
+        "android_client_info": {
+          "package_name": "com.example.exhaustwear"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406347263927-8l9r678qpvm2h2et1n3bc1ho6j4281vm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.exhaustwear",
+            "certificate_hash": "229fe33b6246c74446e047237182e6d42a3e4e17"
+          }
+        },
+        {
+          "client_id": "406347263927-12estcc3mhbm61bd8nscv4cnhsg896s1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuaij7TeJDDbY0ur8LAFW-basee9nyP1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406347263927-12estcc3mhbm61bd8nscv4cnhsg896s1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

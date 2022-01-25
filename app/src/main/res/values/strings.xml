@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Exhaust Wear</string>
+    <string name="Home">ГЛАВНАЯ</string>
+    <string name="Catalog">КАТАЛОГ</string>
+    <string name="Account">ПРОФИЛЬ</string>
+    <string name="Shop">КОРЗИНА</string>
+    <string name="Favourite">ИЗБРАННОЕ</string>
+    <string name="Search">ПОИСК</string>
+    <string name="top_bar_name">EXHAUST WEAR</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -3,7 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/activity_main.xml" value="0.36685773840541946" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/bottom_icon_color.xml" value="0.3828125" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.3828125" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.3828125" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/ic_circle.xml" value="0.3828125" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/ic_home.xml" value="0.3828125" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/ic_shopping_basket.xml" value="0.3828125" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/ic_sort.xml" value="0.3828125" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout-v31/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_basket.xml" value="0.35260416666666666" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_catalog.xml" value="0.36666666666666664" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_favourite.xml" value="0.36666666666666664" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/toolbar.xml" value="0.47164591977869985" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/menu/bottom_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/menu/menu_main.xml" value="0.33" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/menu/tool_bar_menu.xml" value="0.33" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/menu/top_bar_menu.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
