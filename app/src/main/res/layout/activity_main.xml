@@ -8,42 +8,20 @@
     android:background="@color/greys">
 
    <!-- topBar-->
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="0dp"
-        tools:ignore="MissingConstraints">
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?android:attr/actionBarSize"
+            android:layout_height="60dp"
+            app:title="@string/top_bar_name"
             android:background="@color/green"
-            android:elevation="0dp"
-            android:theme="@style/Theme.ExhaustWear"
-            >
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    >
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:text="@string/top_bar_name"
-        android:textColor="@color/greys"
-        android:textSize="26sp"
-        android:textStyle="bold|italic"
-        tools:ignore="TextContrastCheck" />
-      </RelativeLayout>
+            app:titleTextColor="@color/greys"
+            tools:ignore="MissingConstraints">
         </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+
+
 
 <!--frameLayout-->
+
 <FrameLayout
     android:id="@+id/frame_layout"
     android:layout_width="0dp"
@@ -51,8 +29,8 @@
     app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/app_bar"
-     />
+  app:layout_constraintTop_toBottomOf="@+id/toolbar"
+/>
 
     <!--bottomBar-->
 
@@ -67,11 +45,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_menu"
-
-
         />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
