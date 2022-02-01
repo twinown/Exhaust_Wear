@@ -28,17 +28,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //for top bar
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         //toolbar makes func. of the actionbar
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
         //for bottom bar
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
         //for fragments coming from bottom bar
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
         //what user see first
         replaceFragment(new HomeFragment());
         //when click on bottom items
@@ -72,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     //putting the icons in the top toolbar
 
-    @Override
+   @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.topbar_menu, menu);
         return super.onCreateOptionsMenu(menu);
