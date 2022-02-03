@@ -3,7 +3,6 @@ package com.example.exhaustwear;
 import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -28,19 +27,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //for top bar
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         //toolbar makes func. of the actionbar
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
         //for bottom bar
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
-        //for fragments coming from bottom bar
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
         //what user see first
         replaceFragment(new HomeFragment());
+        //for fragments coming from bottom bar
         //when click on bottom items
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
@@ -69,15 +65,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
-
     //putting the icons in the top toolbar
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.topbar_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
     //for searching
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

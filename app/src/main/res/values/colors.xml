@@ -12,5 +12,8 @@
     <color name="icon_bottom_bar">#D0000000</color>
     <color name="unselected_icon">#A6A6A6</color>
     <color name="selected_icon">#009944</color>
+    <color name="select_dot">#00ffffff</color>
+    <color name="unselect_dot">#00ffffff</color>
+    <color name="splash_screen_background">#1a1a18</color>
 
 </resources>

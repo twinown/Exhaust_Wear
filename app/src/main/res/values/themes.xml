@@ -11,8 +11,13 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="top_bar_theme" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+    <item name="android:textStyle">bold|italic</item>
 
 
+    </style>
 
-
+<style name="splashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/splashscreen</item>
+</style>
 </resources>

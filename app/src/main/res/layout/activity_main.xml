@@ -15,8 +15,9 @@
             app:title="@string/top_bar_name"
             android:background="@color/green"
             app:titleTextColor="@color/greys"
+            app:titleTextAppearance="@style/top_bar_theme"
             tools:ignore="MissingConstraints">
-        </androidx.appcompat.widget.Toolbar>
+</androidx.appcompat.widget.Toolbar>
 
 
 
