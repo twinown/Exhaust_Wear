@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         //for bottom bar
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
+<<<<<<< HEAD
+=======
+        //for fragments coming from bottom bar
+>>>>>>> 78242c3ffba69c4d24416cc93d10f8485523e8ef
         //what user see first
         replaceFragment(new HomeFragment());
         //for fragments coming from bottom bar
@@ -66,7 +70,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
     //putting the icons in the top toolbar
+<<<<<<< HEAD
     @Override
+=======
+
+   @Override
+>>>>>>> 78242c3ffba69c4d24416cc93d10f8485523e8ef
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.topbar_menu, menu);
         return super.onCreateOptionsMenu(menu);
