@@ -14,6 +14,10 @@
             android:exported="true"
             android:theme="@style/splashTheme">
 
+<!--
+            starting splashScreen first then mainActivity
+            -->
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

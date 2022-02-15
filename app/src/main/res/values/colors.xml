@@ -15,5 +15,6 @@
     <color name="select_dot">#00ffffff</color>
     <color name="unselect_dot">#00ffffff</color>
     <color name="splash_screen_background">#1a1a18</color>
+    <color name="forgot_remember">#8a000000</color>
 
 </resources>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.example.exhaustwear.Model.Users;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -16,12 +17,14 @@ import android.widget.Toast;
 
 import com.example.exhaustwear.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
 
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     ActivityMainBinding binding;
+    DataSnapshot snapshot;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -31,19 +34,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         //toolbar makes func. of the actionbar
         setSupportActionBar(binding.toolbar);
-        //for bottom bar
+        //for the bottom bar
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
-<<<<<<< HEAD
-=======
-        //for fragments coming from bottom bar
->>>>>>> 78242c3ffba69c4d24416cc93d10f8485523e8ef
+
+
         //what user see first
         replaceFragment(new HomeFragment());
-        //for fragments coming from bottom bar
-        //when click on bottom items
+        //for fragments coming from the bottom bar
+        //when click on the bottom items
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.home:
                     replaceFragment(new HomeFragment());
                     break;
@@ -56,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.shop_basket:
                     replaceFragment(new BasketFragment());
                     break;
-            }
+                case R.id.account:
+                        replaceFragment(new LoginFragment());}
+
             return true;
         });
 
@@ -70,12 +73,9 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
     //putting the icons in the top toolbar
-<<<<<<< HEAD
-    @Override
-=======
 
-   @Override
->>>>>>> 78242c3ffba69c4d24416cc93d10f8485523e8ef
+    @Override
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.topbar_menu, menu);
         return super.onCreateOptionsMenu(menu);

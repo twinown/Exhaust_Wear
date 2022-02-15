@@ -17,15 +17,17 @@ import java.util.ArrayList;
 
 
 public class HomeFragment extends Fragment {
-ImageSlider imageSlider;
+    View view;
+    ImageSlider imageSlider;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        view =  inflater.inflate(R.layout.fragment_home, container, false);
         imageSlider = view.findViewById(R.id.image_slider);
+        // backend for homeFragment
         ArrayList<SlideModel> imageList = new ArrayList<>();
         imageList.add(new SlideModel(R.drawable.one, ScaleTypes.CENTER_CROP));
         imageList.add(new SlideModel(R.drawable.two, ScaleTypes.CENTER_CROP));
