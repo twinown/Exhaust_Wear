@@ -12,8 +12,7 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-// what opens after splashScreen
+    // what opens after splashScreen
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

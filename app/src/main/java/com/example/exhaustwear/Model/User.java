@@ -1,20 +1,17 @@
 package com.example.exhaustwear.Model;
 
-public class Users {
-    //its important to make equal words here and keys(hash map) in database
-    //or in the loginFragment use "equalsIgnoreCase" method
-    private String name, phone, email, password;
+public class User {
+    private String name;
+    private String phone;
+    private String email;
+    private String password;
 
-    public Users() {
-    }
-
-    public Users( String name, String phone, String email, String password) {
+    public User(){}
+    public User(String name, String phone,  String email, String password){
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.password = password;
-
-
     }
 
     public String getName() {

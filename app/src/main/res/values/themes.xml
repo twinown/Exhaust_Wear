@@ -12,17 +12,26 @@
     </style>
 
     <style name="top_bar_theme" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
-    <item name="android:textStyle">bold|italic</item>
+        <item name="android:textStyle">bold|italic</item>
 
 
     </style>
 
-<!--
+    <!--
     for splashScreen
     -->
-<style name="splashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="android:windowBackground">@drawable/splashscreen</item>
-</style>
+    <style name="splashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
+
+    <style name="Theme.ExhaustWear.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ExhaustWear.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.ExhaustWear.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

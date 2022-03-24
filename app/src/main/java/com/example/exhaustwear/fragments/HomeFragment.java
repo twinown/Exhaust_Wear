@@ -1,4 +1,4 @@
-package com.example.exhaustwear;
+package com.example.exhaustwear.fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,14 +12,22 @@ import androidx.fragment.app.Fragment;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.exhaustwear.R;
 
 import java.util.ArrayList;
 
 
 public class HomeFragment extends Fragment {
+    //region Statics
+    public static final int TAB_POSITION = 0;
+    //endregion
     View view;
     ImageSlider imageSlider;
-
+    //region newInstance
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
+    }
+    //endregion
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,4 +53,7 @@ public class HomeFragment extends Fragment {
         Uri uri = Uri.parse(s);
         startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
+
+
+
 }

@@ -6,9 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/greys"
     android:orientation="vertical"
-    tools:context=".HomeFragment">
-
-
+    tools:context=".fragments.HomeFragment">
 
 
 
@@ -17,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:iss_auto_cycle="true"
-        app:iss_period="1700"
+        app:iss_period="1600"
         app:iss_delay="0"
         app:iss_selected_dot="@color/select_dot"
         app:iss_unselected_dot="@color/unselect_dot"/>
