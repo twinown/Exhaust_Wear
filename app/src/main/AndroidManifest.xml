@@ -11,6 +11,9 @@
         android:theme="@style/Theme.ExhaustWear">
 
         <activity
+            android:name=".AccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
             android:exported="true"
             android:theme="@style/splashTheme">
@@ -26,9 +29,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
-            />
-
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
     </application>
 
 </manifest>

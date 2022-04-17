@@ -19,13 +19,16 @@
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/slider_item.xml" value="0.3671875" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/splashscreen.xml" value="0.353" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout-v31/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/activity_account.xml" value="0.36666666666666664" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/activity_log_in.xml" value="0.35104166666666664" />
-        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/activity_sign_up.xml" value="0.35104166666666664" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/catalog_card_item.xml" value="0.22" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/content_sign_up.xml" value="0.35104166666666664" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_account.xml" value="0.33" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_basket.xml" value="0.35260416666666666" />
-        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_catalog.xml" value="0.36666666666666664" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_catalog.xml" value="0.25" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_favourite.xml" value="0.36666666666666664" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_first.xml" value="0.36666666666666664" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_forgot_password.xml" value="0.30462962962962964" />
@@ -37,7 +40,7 @@
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_test.xml" value="0.36666666666666664" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/slider_item.xml" value="0.1" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/toolbar.xml" value="0.47164591977869985" />
-        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/menu/bottom_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/menu/menu_main.xml" value="0.33" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/menu/tool_bar_menu.xml" value="0.33" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/menu/top_bar_menu.xml" value="0.36666666666666664" />

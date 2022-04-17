@@ -7,5 +7,6 @@
     <fragment
         android:id="@+id/BasketFragment"
         android:name="com.example.exhaustwear.fragments.BasketFragment"
+        android:label="EXHAUST WEAR"
         tools:layout="@layout/fragment_basket" />
 </navigation>

@@ -1,15 +1,11 @@
 package com.example.exhaustwear.fragments.account;
 
-import static com.example.exhaustwear.fragments.account.LoginFragment.TAB_POSITION;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
+import androidx.navigation.Navigation;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -19,13 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.exhaustwear.MainActivity;
 import com.example.exhaustwear.R;
 import com.example.exhaustwear.Model.User;
-import com.example.exhaustwear.fragments.catalog.CatalogFragment;
-import com.example.exhaustwear.navigation.FragmentUpdateCallback;
-import com.example.exhaustwear.navigation.MainFragmentPagerAdapter;
+import com.example.exhaustwear.navigationn.FragmentUpdateCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,62 +26,32 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.FirebaseDatabase;
-
-
-
-
-/*
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-*/
-
 import java.util.Objects;
 
 
 public class SignupFragment extends Fragment {
-    //region Statics
 
-    public static final int TAB_POSITION = 6;
-    //endregion
-    View view;
+    private   View view;
     private   EditText name, regPhone, regEmail, regPassword, regConfPassword;
     private   FirebaseAuth firebaseAuth;
-    private   Button regButton;
-    private   TextView login;
     private   ProgressDialog progressDialog;
-
-    public static SignupFragment newInstance() {
-        return new SignupFragment();
-    }
-
-    private FragmentUpdateCallback mFragmentUpdateCallback;
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if (context instanceof FragmentUpdateCallback) {
-            mFragmentUpdateCallback = (FragmentUpdateCallback)context;
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view =  inflater.inflate(R.layout.fragment_signup, container, false);
+        view = inflater.inflate(R.layout.fragment_signup, container, false);
         name = view.findViewById(R.id.editTextRegName);
         regPhone = view.findViewById(R.id.editTextRegNum);
         regEmail = view.findViewById(R.id.editTextRegEmailAddress);
         regPassword = view.findViewById(R.id.editTextPasswordRegOne);
         regConfPassword = view.findViewById(R.id.editTextTextPasswordRegTwo);
         firebaseAuth = FirebaseAuth.getInstance();
+
         //loading bar
         progressDialog = new ProgressDialog(getActivity());
 
         //for "зарегистрироваться" button
-        regButton = view.findViewById(R.id.regButton);
+        Button regButton = view.findViewById(R.id.regButton);
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,11 +60,11 @@ public class SignupFragment extends Fragment {
         });
 
         //for "войти" text
-        login = view.findViewById(R.id.sign_up_text);
+        TextView login = view.findViewById(R.id.sign_up_text);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)  {
-                mFragmentUpdateCallback.backFragment();
+                Navigation.findNavController(view).navigate(R.id.action_signupFragment2_to_loginFragment);
             }
         });
         return view;
@@ -154,7 +116,7 @@ public class SignupFragment extends Fragment {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 progressDialog.dismiss();
-                                mFragmentUpdateCallback.addFragment(LoginFragment.newInstance(), 2);
+                                Navigation.findNavController(view).popBackStack();
                                 Toast.makeText(getActivity(), "Регистрация прошла успешно", Toast.LENGTH_SHORT).show();
 
                             }else{
@@ -212,10 +174,6 @@ public class SignupFragment extends Fragment {
             Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
-
-
-
-
 }
 
 

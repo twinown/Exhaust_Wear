@@ -2,10 +2,42 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_login"
-    app:startDestination="@id/AccountFragment">
+    android:id="@+id/navigation_account"
+    app:startDestination="@id/accountFragment">
+
     <fragment
-        android:id="@+id/AccountFragment"
+        android:id="@+id/accountFragment"
         android:name="com.example.exhaustwear.fragments.account.AccountFragment"
+        android:label="EXHAUST WEAR"
         tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.exhaustwear.fragments.account.LoginFragment"
+        android:label="EXHAUST WEAR"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPassword3"
+            app:destination="@id/forgotPassword3" />
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment2"
+            app:destination="@id/signupFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPassword3"
+        android:name="com.example.exhaustwear.fragments.account.ForgotPassword"
+        android:label="EXHAUST WEAR"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPassword3_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment2"
+        android:name="com.example.exhaustwear.fragments.account.SignupFragment"
+        android:label="EXHAUST WEAR"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signupFragment2_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

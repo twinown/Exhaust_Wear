@@ -1,20 +1,27 @@
 package com.example.exhaustwear.fragments.account;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import android.widget.EditText;
@@ -23,99 +30,77 @@ import android.widget.Toast;
 
 import com.example.exhaustwear.R;
 //import com.example.exhaustwear.activities.SignUpActivity;
-import com.example.exhaustwear.navigation.FragmentUpdateCallback;
-import com.example.exhaustwear.navigation.MainFragmentPagerAdapter;
+import com.example.exhaustwear.navigationn.FragmentUpdateCallback;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 
 public class LoginFragment extends Fragment {
-    MainFragmentPagerAdapter mPagerAdapter;
-    private ViewPager2 mViewPager;
-    public static final int TAB_POSITION = 2;
+
     private FirebaseAuth firebaseAuth;
     private View view;
     private EditText logEmail, logPassword;
-    private TextView forgotPass, registrationText;
-    private Button logButton, clearButton;
     private ProgressDialog loadingBar;
-    private boolean isPressed = true;
 
-    //region newInstance
-    public static LoginFragment newInstance() {
-        return new LoginFragment();
-    }
-
-    //endregion
-
-    //region Fields
-    private FragmentUpdateCallback mFragmentUpdateCallback;
-    //endregion
-
-
-
-
-    //region Fragment lifecycle
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-
-        if (context instanceof FragmentUpdateCallback) {
-            mFragmentUpdateCallback = (FragmentUpdateCallback)context;
-        }
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // This callback will only be called when LoginFragment is at least Started.
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                Navigation.findNavController(view).navigate(R.id.navigation_home);
+               //NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.navigation_home1);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this,callback);
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+            Toolbar toolbar = requireActivity().findViewById(R.id.toolbar);
+            toolbar.setNavigationIcon(null);
+            firebaseAuth = FirebaseAuth.getInstance();
+            view = inflater.inflate(R.layout.fragment_login, container, false);
+            logEmail = view.findViewById(R.id.editTextEmailAddress);
+            logPassword = view.findViewById(R.id.editTextPassword);
+            loadingBar = new ProgressDialog(getActivity());
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        view = inflater.inflate(R.layout.fragment_login, container, false);
-        logEmail = view.findViewById(R.id.editTextEmailAddress);
-        logPassword = view.findViewById(R.id.editTextPassword);
-        loadingBar = new ProgressDialog(getActivity());
-        mViewPager = view.findViewById(R.id.viewPager);
+            //for "Войти" button
+        Button logButton = view.findViewById(R.id.loginButton);
+            logButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    loginUser();
+                }
+            });
 
-        //for "Войти" button
-        logButton = view.findViewById(R.id.loginButton);
-        logButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              loginUser();
-            }
-        });
-
-        //for "Забыли пароль?" text
-        forgotPass = view.findViewById(R.id.forgotPassword);
-        forgotPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mFragmentUpdateCallback.addFragment(ForgotPassword.newInstance(), TAB_POSITION);
-            }
-        });
-
-        //for "Очистить поля" button
-        clearButton = view.findViewById(R.id.clear_text);
-        clearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logEmail.setText("");
-                logPassword.setText("");
-            }
-        });
+            //for "Забыли пароль?" text
+        TextView forgotPass = view.findViewById(R.id.forgotPassword);
+            forgotPass.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_forgotPassword3);
+                }
+            });
 
             // click the text "Регистрация"
-            registrationText = view.findViewById(R.id.sign_up_text);
+        TextView registrationText = view.findViewById(R.id.sign_up_text);
             registrationText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                        mFragmentUpdateCallback.addFragment(SignupFragment.newInstance(), TAB_POSITION);
+                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_signupFragment2);
                 }
             });
-        return view;
-    }
+            return view;
+        }
 
     //pressing the button "Войти"
     private void loginUser() {
@@ -143,9 +128,9 @@ public class LoginFragment extends Fragment {
                         @Override
                         public void onSuccess(AuthResult authResult) {
                             loadingBar.dismiss();
-                           mFragmentUpdateCallback.openAccountFragment();
+                            // NavHostFragment.findNavController(LoginFragment.this).popBackStack();
+                            Navigation.findNavController(view).popBackStack();
                             Toast.makeText(getActivity(), "Успешный вход!", Toast.LENGTH_SHORT).show();
-
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -159,9 +144,6 @@ public class LoginFragment extends Fragment {
 
 
     }
-
-
-
 }
 //old code (log in using phone) without email auth
 //only database

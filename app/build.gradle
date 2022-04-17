@@ -36,6 +36,12 @@ android {
 
 dependencies {
 
+
+    // Java language implementation
+    implementation("androidx.navigation:navigation-fragment:2.4.1")
+    implementation("androidx.navigation:navigation-ui:2.4.1")
+    implementation "androidx.fragment:fragment:1.4.1"
+
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
@@ -66,5 +72,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 
 }
