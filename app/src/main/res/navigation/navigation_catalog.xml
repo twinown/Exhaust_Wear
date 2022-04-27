@@ -8,19 +8,28 @@
     <fragment
         android:id="@+id/CatalogFragment"
         android:name="com.example.exhaustwear.fragments.catalog.CatalogFragment"
-
         tools:layout="@layout/fragment_catalog" >
         <action
-            android:id="@+id/action_CatalogFragment_to_testFragment"
-            app:destination="@id/testFragment" />
+            android:id="@+id/action_CatalogFragment_to_catalog_detail_Fragment"
+            app:destination="@id/catalog_detail_Fragment" />
     </fragment>
     <fragment
-        android:id="@+id/testFragment"
-        android:name="com.example.exhaustwear.fragments.catalog.TestFragment"
-
-        tools:layout="@layout/fragment_test" >
+        android:id="@+id/catalog_detail_Fragment"
+        android:name="com.example.exhaustwear.fragments.catalog.CatalogDetailFragment"
+        tools:layout="@layout/fragment_detail_catalog" >
         <action
-            android:id="@+id/action_testFragment_to_CatalogFragment"
+            android:id="@+id/action_catalog_detail_Fragment_to_CatalogFragment"
             app:destination="@id/CatalogFragment" />
+        <action
+            android:id="@+id/action_catalog_detail_Fragment_to_stuffDetailFragment"
+            app:destination="@id/stuffDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stuffDetailFragment"
+        android:name="com.example.exhaustwear.fragments.catalog.StuffDetailFragment"
+        tools:layout="@layout/fragment_stuff_detail" >
+        <action
+            android:id="@+id/action_stuffDetailFragment_to_catalog_detail_Fragment"
+            app:destination="@id/catalog_detail_Fragment" />
     </fragment>
 </navigation>

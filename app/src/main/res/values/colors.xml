@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#009944</color>
     <color name="dirtyGreen">#0A8841</color>
+    <color name="dirtiestGreen">#097538</color>
     <color name="greys">#c4c4c4</color>
     <color name="icon_bottom_bar">#D0000000</color>
     <color name="card_background">#D01C1C1C</color>
