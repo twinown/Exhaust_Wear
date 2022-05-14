@@ -10,6 +10,12 @@
 
 
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/image_slider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+  <!--
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/image_slider"
         android:layout_width="wrap_content"
@@ -18,6 +24,6 @@
         app:iss_period="1500"
         app:iss_delay="0"
         app:iss_selected_dot="@color/select_dot"
-        app:iss_unselected_dot="@color/unselect_dot"/>
+        app:iss_unselected_dot="@color/unselect_dot"/>-->
 
 </LinearLayout>

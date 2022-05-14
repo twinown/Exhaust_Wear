@@ -13,15 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.exhaustwear.Model.CatalogDetailModel;
+import com.example.exhaustwear.Model.StuffDetailModel;
 import com.example.exhaustwear.R;
 
 import java.util.List;
 
 public class StuffDetailAdapter extends RecyclerView.Adapter<StuffDetailAdapter.ViewHolder> {
     Context context;
-    List <CatalogDetailModel> list;
+    List <StuffDetailModel> list;
 
-    public StuffDetailAdapter(Context context, List<CatalogDetailModel> list) {
+    public StuffDetailAdapter(Context context, List<StuffDetailModel> list) {
         this.context = context;
         this.list = list;
     }
@@ -37,7 +38,7 @@ public class StuffDetailAdapter extends RecyclerView.Adapter<StuffDetailAdapter.
     public void onBindViewHolder(@NonNull StuffDetailAdapter.ViewHolder holder, int position) {
         Glide.with(context).load(list.get(position).getImg_url()).into(holder.imageView);
         holder.price.setText(list.get(position).getPrice());
-        holder.description.setText(list.get(position).getName());
+        holder.description.setText(list.get(position).getDescription());
 
     }
 
@@ -51,11 +52,11 @@ public class StuffDetailAdapter extends RecyclerView.Adapter<StuffDetailAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView price,description;
-     //   Spinner spinner;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.stuff_detail_img);
+           // imageView = itemView.findViewById(R.id.stuff_detail_img);
             price = itemView.findViewById(R.id.stuff_detail_price);
        //     spinner = itemView.findViewById(R.id.stuff_detail_spinner);
             description = itemView.findViewById(R.id.stuff_detail_description);

@@ -2,8 +2,10 @@ package com.example.exhaustwear.fragments.catalog;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.example.exhaustwear.Model.CatalogModel;
@@ -35,6 +39,8 @@ public class CatalogFragment extends Fragment {
     List<CatalogModel> catalogModelList;
     CatalogAdapter catalogAdapter;
 
+    ProgressBar progressBar;
+
 
 
     @Override
@@ -46,11 +52,15 @@ public class CatalogFragment extends Fragment {
         toolbar.setNavigationIcon(null);
         view =  inflater.inflate(R.layout.fragment_catalog, container, false);
         firebaseFirestore = FirebaseFirestore.getInstance();
-
+        progressBar = view.findViewById(R.id.progress_bar);
         recyclerView = view.findViewById(R.id.cat_rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
         catalogModelList = new ArrayList<>();
         catalogAdapter = new CatalogAdapter(getActivity(), catalogModelList);
+
+        // for saving recyclerview position
+        catalogAdapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
+
         recyclerView.setAdapter(catalogAdapter);
 
         firebaseFirestore.collection("NavCategory")
@@ -64,6 +74,7 @@ public class CatalogFragment extends Fragment {
                                 CatalogModel catalogModel = queryDocumentSnapshot.toObject(CatalogModel.class);
                                 catalogModelList.add(catalogModel);
                                 catalogAdapter.notifyDataSetChanged();
+                                progressBar.setVisibility(View.GONE);
                             }
                         } else {
                             Toast.makeText(getActivity(), "Error" + task.getException(), Toast.LENGTH_SHORT).show();

@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
+
 import com.example.exhaustwear.Model.CatalogDetailModel;
 import com.example.exhaustwear.R;
 import com.example.exhaustwear.adapters.CatalogDetailAdapter;
@@ -29,6 +32,7 @@ public class CatalogDetailFragment extends Fragment {
     List<CatalogDetailModel> list;
     CatalogDetailAdapter catalogDetailAdapter;
     FirebaseFirestore firebaseFirestore;
+    ProgressBar progressBar;
     String aroma = "aroma";
     String baseball = "baseball";
     String bracelets = "bracelets";
@@ -38,7 +42,7 @@ public class CatalogDetailFragment extends Fragment {
     String caps = "caps";
     String cups = "cups";
     String pants = "pants";
-    String japnums = "japnum";
+    String japnums = "japnums";
 
 
 
@@ -49,6 +53,7 @@ public class CatalogDetailFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_detail_catalog, container, false);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
+        progressBar = view.findViewById(R.id.progress_bar_detail);
         String type = requireArguments().getString("type");
         recyclerView = view.findViewById(R.id.nav_cat_det_rec);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
@@ -95,6 +100,8 @@ public class CatalogDetailFragment extends Fragment {
                         CatalogDetailModel catalogDetailModel = documentSnapshot.toObject(CatalogDetailModel.class);
                         list.add(catalogDetailModel);
                         catalogDetailAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+
                     }
                 }
             });

@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="15dp"
-    android:layout_marginLeft="5dp"
+    android:layout_marginLeft="10dp"
     android:layout_marginRight="5dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="4dp">
@@ -13,9 +13,11 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="280dp"
         android:background="@color/unselected_icon"
         android:orientation="vertical">
+
+
 
         <ImageView
             android:id="@+id/cat_nav_det_img"
@@ -33,25 +35,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                tools:ignore="UseCompoundDrawables">
+               >
 
                 <TextView
                     android:id="@+id/nav_cat_det_price"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:text="Price"
                     android:textColor="@color/card_background"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    tools:ignore="RtlHardcoded" />
+                    android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="55dp"
+                    android:layout_marginStart="50dp"
                     android:src="@drawable/ic_baseline_add_shopping_cart"
-                    tools:ignore="ContentDescription" />
+                     />
 
             </LinearLayout>
 
@@ -73,19 +75,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-
+                android:textStyle="italic"
                 android:layout_marginLeft="10dp"
                 android:text="Group"
                 android:textColor="@color/card_background"
                 android:textSize="15sp"
                 tools:ignore="RtlHardcoded" />
             <TextView
-                android:id="@+id/des"
+                android:id="@+id/nav_des"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginLeft="10dp"
                 android:text="Descrip"
+                android:textColor="@color/card_background"
+                android:textSize="15sp"
+                tools:ignore="RtlHardcoded" />
+            <TextView
+                android:id="@+id/nav_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:text="Size"
                 android:textColor="@color/card_background"
                 android:textSize="15sp"
                 tools:ignore="RtlHardcoded" />
