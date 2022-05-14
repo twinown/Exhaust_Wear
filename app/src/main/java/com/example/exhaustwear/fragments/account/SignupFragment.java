@@ -1,7 +1,6 @@
 package com.example.exhaustwear.fragments.account;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.exhaustwear.R;
 import com.example.exhaustwear.Model.User;
-import com.example.exhaustwear.navigationn.FragmentUpdateCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

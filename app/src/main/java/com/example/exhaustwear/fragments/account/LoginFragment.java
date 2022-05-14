@@ -2,21 +2,14 @@ package com.example.exhaustwear.fragments.account;
 
 import android.app.ProgressDialog;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -30,15 +23,11 @@ import android.widget.Toast;
 
 import com.example.exhaustwear.R;
 //import com.example.exhaustwear.activities.SignUpActivity;
-import com.example.exhaustwear.navigationn.FragmentUpdateCallback;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.Objects;
 
 
 public class LoginFragment extends Fragment {

@@ -8,15 +8,12 @@
     android:orientation="vertical"
     tools:context=".fragments.HomeFragment">
 
-
-
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/image_slider"
+        android:id="@+id/view_pager2_home"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         />
-  <!--
-    <com.denzcoskun.imageslider.ImageSlider
+   <!-- <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/image_slider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
