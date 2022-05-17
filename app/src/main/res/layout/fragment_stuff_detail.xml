@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+<!--
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"
             android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent">-->
 
             <ScrollView
                 android:id="@+id/scrollView2"
@@ -39,21 +39,28 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-
-                        <com.denzcoskun.imageslider.ImageSlider
-                            android:id="@+id/stuff_detail_img_slide"
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/vp2_stuff"
                             android:layout_width="match_parent"
                             android:layout_height="500dp"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentEnd="true" />
 
-                    <!--    <ImageView
-                            android:id="@+id/stuff_detail_img"
-                            android:layout_width="match_parent"
-                            android:layout_height="500dp"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentEnd="true"
-                            android:scaleType="centerInside" />-->
+
+                        <!--   <com.denzcoskun.imageslider.ImageSlider
+                               android:id="@+id/stuff_detail_img_slide"
+                               android:layout_width="match_parent"
+                               android:layout_height="500dp"
+                               android:layout_alignParentStart="true"
+                               android:layout_alignParentEnd="true" />-->
+
+                        <!--    <ImageView
+                                android:id="@+id/stuff_detail_img"
+                                android:layout_width="match_parent"
+                                android:layout_height="500dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentEnd="true"
+                                android:scaleType="centerInside" />-->
 
                         <ImageView
                             android:layout_width="45dp"
@@ -116,8 +123,10 @@
                 </LinearLayout>
 
             </ScrollView>
+<!--
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+-->
 
         <LinearLayout
             android:id="@+id/lili"

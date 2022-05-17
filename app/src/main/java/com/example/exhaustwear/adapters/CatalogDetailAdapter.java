@@ -34,7 +34,8 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.catalog_card_detail_item, parent, false));
+        return new ViewHolder(
+                LayoutInflater.from(parent.getContext()).inflate(R.layout.catalog_card_detail_item, parent, false));
     }
 
     @SuppressLint("CheckResult")
@@ -55,11 +56,11 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("price", list.get(position).getPrice());
                 bundle.putString("img", list.get(position).getImg_url());
                 bundle.putString("img2", list.get(position).getImg_url2());
                 bundle.putString("img3", list.get(position).getImg_url3());
                 bundle.putString("img4", list.get(position).getImg_url4());
+                bundle.putString("price", list.get(position).getPrice());
                 bundle.putString("description", list.get(position).getDescription());
                 bundle.putString("size", list.get(position).getSize());
                 Navigation.findNavController(view).navigate(R.id.action_catalog_detail_Fragment_to_stuffDetailFragment, bundle);
