@@ -48,15 +48,16 @@ public class HomeFragment extends Fragment {
         vpModels.add(new VpModel(R.drawable.one));
         vpModels.add(new VpModel(R.drawable.two));
         viewPager2.setAdapter(new VpAdapter(vpModels, viewPager2));
-
+        viewPager2.setClipChildren(false);
+        viewPager2.setOffscreenPageLimit(1);
+        viewPager2.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
         //for autoSlider and backLoop
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 slideHandler.removeCallbacks(sliderRunnable);
-                slideHandler.postDelayed(sliderRunnable, 1600);
-
+                slideHandler.postDelayed(sliderRunnable, 1700);
             }
         });
         return view;
@@ -66,7 +67,6 @@ public class HomeFragment extends Fragment {
         @Override
         public void run() {
             viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
-
         }
     };
 }

@@ -10,9 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExhaustWear">
 
-        <activity
-            android:name=".AccountActivity"
-            android:exported="false" />
+
         <activity
             android:name=".SplashScreen"
             android:exported="true"

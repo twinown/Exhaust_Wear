@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+<?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -146,5 +148,133 @@
             android:textStyle="bold" />
 
     </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greys"
+    tools:context=".LoginActivity"
+
+    >
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <ScrollView
+                android:id="@+id/scrollView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="35dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/vp2_stuff"
+                            android:layout_width="match_parent"
+                            android:layout_height="500dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true" />
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginRight="10dp"
+                            android:paddingBottom="10dp"
+                            android:src="@drawable/ic_baseline_favorite_24" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/stuff_detail_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Price"
+                            android:textColor="@color/card_background"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/stuff_detail_size"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="20dp"
+                            android:gravity="right"
+                            android:text="Size"
+                            android:textColor="@color/card_background"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/stuff_detail_description_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Описание товара"
+                        android:textAlignment="center"
+                        android:textColor="@color/card_background"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/stuff_detail_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:text="description"
+                        android:textAlignment="center"
+                        android:textColor="@color/card_background"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+            </ScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        <LinearLayout
+            android:id="@+id/lili"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_to_cart_but"
+                android:layout_width="350dp"
+                android:layout_height="39dp"
+                android:background="@drawable/background_button"
+                android:text="Добавить в корзину"
+                android:textColor="@color/greys"
+                android:textSize="18sp"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

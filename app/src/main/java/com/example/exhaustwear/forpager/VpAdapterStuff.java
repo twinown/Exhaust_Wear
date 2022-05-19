@@ -1,5 +1,6 @@
 package com.example.exhaustwear.forpager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,15 +18,18 @@ import com.example.exhaustwear.adapters.CatalogDetailAdapter;
 import java.util.List;
 
 public class VpAdapterStuff extends RecyclerView.Adapter<VpAdapterStuff.ViewHolder> {
+
     Context context;
     List<VpModelStuff> vpModelStuff;
+    ViewPager2 viewPager2;
 
 
 
 
-    public VpAdapterStuff(Context context, List<VpModelStuff> vpModelStuff) {
+    public VpAdapterStuff(Context context, List<VpModelStuff> vpModelStuff, ViewPager2 viewPager2) {
         this.context = context;
         this.vpModelStuff = vpModelStuff;
+        this.viewPager2 = viewPager2;
     }
 
     @NonNull
@@ -40,6 +44,9 @@ public class VpAdapterStuff extends RecyclerView.Adapter<VpAdapterStuff.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Glide.with(context).load(vpModelStuff.get(position).getImg_url()).into(holder.imageView);
+        if (position == vpModelStuff.size() -2){
+            viewPager2.post(runnable);
+        }
     }
 
     @Override
@@ -57,7 +64,16 @@ public class VpAdapterStuff extends RecyclerView.Adapter<VpAdapterStuff.ViewHold
 
     }
 
+    //for infinite slider
+    private final Runnable runnable = new Runnable() {
+        @SuppressLint("NotifyDataSetChanged")
+        @Override
+        public void run() {
+            vpModelStuff.addAll(vpModelStuff);
+            notifyDataSetChanged();
 
+        }
+    };
 
 
 }

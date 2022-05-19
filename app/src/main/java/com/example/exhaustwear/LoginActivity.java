@@ -28,7 +28,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-/*
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
@@ -129,10 +128,9 @@ public class LoginActivity extends AppCompatActivity {
                             loadingBar.dismiss();
                         //   replaceFragment(new AccountFragment());
                             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                            fragmentTransaction.replace(R.id.container, AccountFragment.newInstance()).commit();
-                            */
-/*logButton.setVisibility(View.INVISIBLE);
-                            clearButton.setVisibility(View.INVISIBLE);*//*
+                         //  fragmentTransaction.replace(R.id.container, AccountFragment.newInstance()).commit();
+logButton.setVisibility(View.INVISIBLE);
+                            clearButton.setVisibility(View.INVISIBLE);
 
                             Toast.makeText(LoginActivity.this, "Успешный вход!", Toast.LENGTH_SHORT).show();
 
@@ -150,17 +148,15 @@ public class LoginActivity extends AppCompatActivity {
   private void replaceFragment (@NonNull Fragment fragment){
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.container, fragment).commit();
-    */
-/*  logButton.setVisibility(View.INVISIBLE);
-      clearButton.setVisibility(View.INVISIBLE);*//*
+  logButton.setVisibility(View.INVISIBLE);
+      clearButton.setVisibility(View.INVISIBLE);
 
     }
 
- */
-/* @Override
+ @Override
     public void onBackPressed() {
             super.onBackPressed();
 
-    }*//*
+    }
 
-}*/
+}

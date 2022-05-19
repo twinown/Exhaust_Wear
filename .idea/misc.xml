@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/active_dot.xml" value="0.2975" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/background.xml" value="0.3115" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/background_button.xml" value="0.3525" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/background_edittext.xml" value="0.287" />
@@ -18,6 +19,7 @@
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/ic_phone.xml" value="0.3195" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/ic_shopping_basket.xml" value="0.3828125" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/ic_sort.xml" value="0.3828125" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/nonactive_dot.xml" value="0.2975" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/slider_item.xml" value="0.3671875" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/drawable/splashscreen.xml" value="0.353" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout-v31/activity_main.xml" value="0.36666666666666664" />
@@ -43,7 +45,7 @@
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_nav_cat.xml" value="0.17344173441734417" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_second.xml" value="0.36666666666666664" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_signup.xml" value="0.33" />
-        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_stuff_detail.xml" value="0.25" />
+        <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_stuff_detail.xml" value="0.3573635427394439" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/fragment_test.xml" value="0.36666666666666664" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/slider_item.xml" value="0.1" />
         <entry key="..\:/Programmer/android_studio_projects/ExhaustWear/app/src/main/res/layout/toolbar.xml" value="0.47164591977869985" />

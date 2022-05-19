@@ -13,9 +13,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.example.exhaustwear.R;
-
 import java.util.List;
 
 public class VpAdapter extends RecyclerView.Adapter<VpAdapter.ViewHolder> {
@@ -47,7 +45,7 @@ public class VpAdapter extends RecyclerView.Adapter<VpAdapter.ViewHolder> {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 slideHandler.removeCallbacks(runnable);
-                slideHandler.postDelayed(runnable, 1600);
+                slideHandler.postDelayed(runnable, 1700);
             }
         });
         if (position == 0) {
@@ -84,7 +82,7 @@ public class VpAdapter extends RecyclerView.Adapter<VpAdapter.ViewHolder> {
 
     }
 
-    //for infiniteSlider
+    //for backLoop slider
     private final Runnable runnable = new Runnable() {
         @SuppressLint("NotifyDataSetChanged")
         @Override
