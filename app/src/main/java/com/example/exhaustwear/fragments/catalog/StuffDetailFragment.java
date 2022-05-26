@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
@@ -17,22 +19,32 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.exhaustwear.R;
 import com.example.exhaustwear.forpager.VpAdapterStuff;
 import com.example.exhaustwear.forpager.VpModelStuff;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class StuffDetailFragment extends Fragment {
 
     View view;
-    TextView price, description, size;
+    TextView price, description, size, quantity;
     Button addToCart;
     ViewPager2 viewPager2;
     VpAdapterStuff vpAdapterStuff;
     List<VpModelStuff> vpModelStuff;
     LinearLayout linearLayout;
     int dotsCount;
+    int quantityNum;
     List<ImageView> dots;
+    FirebaseFirestore firebaseFirestore;
+    FirebaseAuth firebaseAuth;
+    ImageView addQuantity, removeQuantity;
 
 
     @Override
@@ -40,11 +52,41 @@ public class StuffDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_stuff_detail, container, false);
-
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         price = view.findViewById(R.id.stuff_detail_price);
         description = view.findViewById(R.id.stuff_detail_description);
         addToCart = view.findViewById(R.id.add_to_cart_but);
         size = view.findViewById(R.id.stuff_detail_size);
+
+        quantity = view.findViewById(R.id.quantity);
+        addQuantity = view.findViewById(R.id.add_quantity);
+        removeQuantity = view.findViewById(R.id.remove_quantity);
+
+        addQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                quantityNum = quantityNum + 1;
+                String text = Integer.toString(quantityNum);
+                quantity.setText(text);
+                if (quantityNum > 5) {
+                    quantity.setText("5");
+                    Toast.makeText(getActivity(), "Максимальное количсетво товара для заказа - 5", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        removeQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                quantityNum = quantityNum - 1;
+                String text = Integer.toString(quantityNum);
+                quantity.setText(text);
+                if (quantityNum < 0) {
+                    quantity.setText("0");
+                    Toast.makeText(getActivity(), "Тормози", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         viewPager2 = view.findViewById(R.id.vp2_stuff);
         vpModelStuff = new ArrayList<>();
@@ -102,16 +144,34 @@ public class StuffDetailFragment extends Fragment {
             }
         });
 
-
+//adding to cart
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (firebaseAuth.getCurrentUser() == null) {
+                    Toast.makeText(getActivity(), "Для добавления в корзину войдите в аккаунт", Toast.LENGTH_SHORT).show();
+                } else {
+                    addToCart();
+                }
             }
         });
 
         return view;
     }
 
+    private void addToCart() {
+        final HashMap<String, Object> cartMap = new HashMap<>();
+        cartMap.put("productName", requireArguments().getString("name"));
+        cartMap.put("productImg", requireArguments().getString("img"));
+        cartMap.put("productPrice", requireArguments().getString("price"));
+        cartMap.put("quantity", quantity.getText());
+        firebaseFirestore.collection("AddToCart").document(firebaseAuth.getCurrentUser().getUid())
+                .collection("CurrentUser").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                        Toast.makeText(getActivity(), "Добавлено в корзину", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 }
 

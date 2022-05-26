@@ -76,6 +76,9 @@ public class AccountFragment extends Fragment {
      return view;
     }
 
+
+    //if user doesnt login, open login fragment
+    //else open account
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

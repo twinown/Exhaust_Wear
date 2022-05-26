@@ -95,11 +95,53 @@
                 android:id="@+id/stuff_detail_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
                 android:text="description"
                 android:textAlignment="center"
                 android:textColor="@color/card_background"
                 android:textSize="17sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/add_quantity"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_marginLeft="6dp"
+                    android:src="@drawable/ic_baseline_add"
+                    />
+
+                <TextView
+                    android:id="@+id/quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="0"
+                    android:textColor="@color/card_background"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    />
+
+                <ImageView
+                    android:id="@+id/remove_quantity"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:src="@drawable/ic_baseline_remove"
+                    />
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
         </LinearLayout>
 
     </ScrollView>

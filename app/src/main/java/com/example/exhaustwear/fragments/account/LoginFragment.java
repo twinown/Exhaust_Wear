@@ -1,8 +1,15 @@
 package com.example.exhaustwear.fragments.account;
 
 import android.app.ProgressDialog;
-
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -11,19 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.exhaustwear.R;
-//import com.example.exhaustwear.activities.SignUpActivity;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -45,51 +40,51 @@ public class LoginFragment extends Fragment {
             @Override
             public void handleOnBackPressed() {
                 Navigation.findNavController(view).navigate(R.id.navigation_home);
-               //NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.navigation_home1);
+                //NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.navigation_home1);
             }
         };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this,callback);
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-            Toolbar toolbar = requireActivity().findViewById(R.id.toolbar);
-            toolbar.setNavigationIcon(null);
-            firebaseAuth = FirebaseAuth.getInstance();
-            view = inflater.inflate(R.layout.fragment_login, container, false);
-            logEmail = view.findViewById(R.id.editTextEmailAddress);
-            logPassword = view.findViewById(R.id.editTextPassword);
-            loadingBar = new ProgressDialog(getActivity());
+        Toolbar toolbar = requireActivity().findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(null);
+        firebaseAuth = FirebaseAuth.getInstance();
+        view = inflater.inflate(R.layout.fragment_login, container, false);
+        logEmail = view.findViewById(R.id.editTextEmailAddress);
+        logPassword = view.findViewById(R.id.editTextPassword);
+        loadingBar = new ProgressDialog(getActivity());
 
-            //for "Войти" button
+        //for "Войти" button
         Button logButton = view.findViewById(R.id.loginButton);
-            logButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    loginUser();
-                }
-            });
+        logButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginUser();
+            }
+        });
 
-            //for "Забыли пароль?" text
+        //for "Забыли пароль?" text
         TextView forgotPass = view.findViewById(R.id.forgotPassword);
-            forgotPass.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_forgotPassword3);
-                }
-            });
+        forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_forgotPassword3);
+            }
+        });
 
-            // click the text "Регистрация"
+        // click the text "Регистрация"
         TextView registrationText = view.findViewById(R.id.sign_up_text);
-            registrationText.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_signupFragment2);
-                }
-            });
-            return view;
-        }
+        registrationText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_signupFragment2);
+            }
+        });
+        return view;
+    }
 
     //pressing the button "Войти"
     private void loginUser() {
