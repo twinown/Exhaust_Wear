@@ -51,6 +51,7 @@ public class HomeFragment extends Fragment {
         viewPager2.setClipChildren(false);
         viewPager2.setOffscreenPageLimit(1);
         viewPager2.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
+
         //for autoSlider and backLoop
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override

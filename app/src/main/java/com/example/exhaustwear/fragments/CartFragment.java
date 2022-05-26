@@ -10,11 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.exhaustwear.R;
-import com.example.exhaustwear.fragments.catalog.CatalogFragment;
-import com.google.firebase.auth.FirebaseAuth;
 
 
-public class BasketFragment extends Fragment {
+public class CartFragment extends Fragment {
 
     View view;
 
@@ -24,7 +22,7 @@ public class BasketFragment extends Fragment {
         Toolbar toolbar = requireActivity().findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(null);
         // Inflate the layout for this fragment
-            view = inflater.inflate(R.layout.fragment_basket, container, false);
+            view = inflater.inflate(R.layout.fragment_cart, container, false);
  return view;
 }
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
@@ -67,6 +68,17 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
             }
         });
 
+
+        holder.addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Toast.makeText(context, "Добавлено в корзину", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     @Override
@@ -75,7 +87,7 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
+        ImageView imageView, addToCart, addToFavourite;
         TextView price, name,group, description, size;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -85,6 +97,8 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
             group = itemView.findViewById(R.id.nav_cat_det_group);
             description = itemView.findViewById(R.id.nav_des);
             size = itemView.findViewById(R.id.nav_size);
+            addToCart = itemView.findViewById(R.id.addToCart);
+            addToFavourite = itemView.findViewById(R.id.addToFavourite);
 
         }
     }

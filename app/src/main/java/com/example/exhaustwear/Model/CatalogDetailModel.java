@@ -1,8 +1,7 @@
 package com.example.exhaustwear.Model;
 
-import java.io.Serializable;
 
-public class CatalogDetailModel implements Serializable {
+public class CatalogDetailModel {
     String name;
     String img_url, img_url2, img_url3, img_url4;
     String price;
@@ -15,8 +14,8 @@ public class CatalogDetailModel implements Serializable {
     }
 
 
-
-    public CatalogDetailModel(String name, String img_url, String price, String type, String group, String description, String size) {
+    public CatalogDetailModel(String name, String img_url, String img_url2, String img_url3, String img_url4,
+                              String price, String type, String group, String description, String size) {
         this.name = name;
         this.img_url = img_url;
         this.img_url2 = img_url2;

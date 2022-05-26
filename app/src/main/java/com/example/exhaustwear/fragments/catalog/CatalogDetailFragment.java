@@ -45,7 +45,6 @@ public class CatalogDetailFragment extends Fragment {
     String japnums = "japnums";
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,7 +65,6 @@ public class CatalogDetailFragment extends Fragment {
 
         recyclerView.setAdapter(catalogDetailAdapter);
 
-
         if (type != null && type.equalsIgnoreCase(aroma)){
             openDetail(aroma, "NavCategoryDetailed");
         }else if (type != null && type.equalsIgnoreCase(baseball)) {
@@ -86,7 +84,7 @@ public class CatalogDetailFragment extends Fragment {
         }else if (type != null && type.equalsIgnoreCase(pants)){
             openDetail(pants, "NavCategoryDetailedPants");
         }else if (type != null && type.equalsIgnoreCase(japnums)){
-            openDetail(japnums,"NavCategoryDetailedJapnums" );
+            openDetail(japnums,"NavCategoryDetailedJapnums");
         }
         return view;
     }
@@ -101,10 +99,8 @@ public class CatalogDetailFragment extends Fragment {
                         list.add(catalogDetailModel);
                         catalogDetailAdapter.notifyDataSetChanged();
                         progressBar.setVisibility(View.GONE);
-
                     }
                 }
             });
     }
-
 }
