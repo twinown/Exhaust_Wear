@@ -137,7 +137,7 @@ public class SignupFragment extends Fragment {
         }
     }
 
-    //what happens after pushing the "зарегистрироваться" button with checking of the user`s existing
+    //what happens after pushing the "зарегистрироваться" button ---> checking of the user`s existing
     public void checkUserExists(){
         try {
             if(regEmail.getText().toString().isEmpty()){
