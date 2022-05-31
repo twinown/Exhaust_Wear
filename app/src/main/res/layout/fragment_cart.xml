@@ -23,13 +23,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/add_to_cart_but"
+        app:layout_constraintBottom_toTopOf="@+id/make_an_order_butt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/add_to_cart_but"
+        android:id="@+id/make_an_order_butt"
         android:layout_width="350dp"
         android:layout_height="39dp"
         android:layout_marginBottom="8dp"

@@ -9,13 +9,14 @@ public class CatalogDetailModel {
     String group;
     String description;
     String size;
+    String documentId;
 
     public CatalogDetailModel() {
     }
 
 
     public CatalogDetailModel(String name, String img_url, String img_url2, String img_url3, String img_url4,
-                              String price, String type, String group, String description, String size) {
+                              String price, String type, String group, String description, String size, String documentId) {
         this.name = name;
         this.img_url = img_url;
         this.img_url2 = img_url2;
@@ -26,6 +27,15 @@ public class CatalogDetailModel {
         this.group = group;
         this.description = description;
         this.size = size;
+        this.documentId = documentId;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 
     public String getSize() {

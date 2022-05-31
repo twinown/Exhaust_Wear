@@ -160,6 +160,10 @@ public class StuffDetailFragment extends Fragment {
     }
 
     private void addToCart() {
+        //проверить , есть ли товар уже в корзине сначала
+        //если есть есть , написать , что уже добавлен
+        //иконка уже загорается
+
         final HashMap<String, Object> cartMap = new HashMap<>();
         cartMap.put("productName", requireArguments().getString("name"));
         cartMap.put("productImg", requireArguments().getString("img"));
