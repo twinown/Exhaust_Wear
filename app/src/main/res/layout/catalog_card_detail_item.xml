@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:layout_marginTop="15dp"
+    android:layout_marginBottom="6dp"
     android:layout_marginRight="5dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="4dp">
@@ -35,22 +36,40 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/nav_cat_det_price"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Price"
-                    android:textColor="@color/card_background"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/addToCart"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="50dp"
-                    android:src="@drawable/ic_baseline_add_shopping_cart" />
+    <TextView
+        android:id="@+id/nav_cat_det_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textColor="@color/card_background"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic__ruble_for_fr_stuff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nav_cat_det_price"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/addToCart"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/ic_baseline_add_shopping_cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 
@@ -112,5 +131,7 @@
         android:layout_gravity="right"
         android:src="@drawable/ic_baseline_favorite_24"
         tools:ignore="ContentDescription" />
+
+
 
 </androidx.cardview.widget.CardView>

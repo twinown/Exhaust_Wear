@@ -124,23 +124,13 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
                                         cartMap.put("productName", list.get(position).getName());
                                         cartMap.put("productImg", list.get(position).getImg_url());
                                         cartMap.put("productPrice", list.get(position).getPrice());
-                                        cartMap.put("quantity", quantity);
+                                        cartMap.put("productQuantity", quantity);
                                         firebaseFirestore.collection("AddToCart").document(firebaseAuth.getCurrentUser().getUid())
                                                 .collection("CurrentUser")
                                                 .add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<DocumentReference> task) {
                                                         if (task.isSuccessful()){
-
-
-                                                            //ОСТАВИТЬ ЭТО НА ПОТОМ, СНАЧАЛА ОБЫЧНАЯ КОРЗИНА, ТАМ УЖЕ ПОЙМЁМ, КАК ПОЛУЧИТЬ ЭТОТ СНАПЧОТ
-
-                                                         /*   DocumentSnapshot documentSnapshot;
-
-                                                            for (DocumentSnapshot document: task.getResult().getD
-                                                                 ) {
-                                                                
-                                                            }*/
                                                             holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context,
                                                                     R.drawable.ic_baseline_add_shopping_cart_green));
                                                             Toast.makeText(context, "Добавлено в корзину", Toast.LENGTH_SHORT).show();
@@ -149,7 +139,15 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
                                                 });
                                     }
                                 } else{
+                                    //ОСТАВИТЬ ЭТО НА ПОТОМ, СНАЧАЛА ОБЫЧНАЯ КОРЗИНА, ТАМ УЖЕ ПОЙМЁМ, КАК ПОЛУЧИТЬ ЭТОТ СНАПЧОТ
+                                    //чтоб удалить товар по иконке
 
+                                                         /*   DocumentSnapshot documentSnapshot;
+
+                                                            for (DocumentSnapshot document: task.getResult().getD
+                                                                 ) {
+
+                                                            }*/
                                     // y
                                     firebaseFirestore.collection("AddToCart").document(firebaseAuth.getCurrentUser().getUid())
                                             .collection("CurrentUser").document().delete()

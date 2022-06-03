@@ -6,7 +6,7 @@
     <include app:graph="@navigation/navigation_home" />
     <include app:graph="@navigation/navigation_catalog" />
     <include app:graph="@navigation/navigation_favourite" />
-    <include app:graph="@navigation/navigation_basket" />
+    <include app:graph="@navigation/navigation_cart" />
     <include app:graph="@navigation/navigation_account" />
 
 

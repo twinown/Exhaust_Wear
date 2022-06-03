@@ -25,7 +25,7 @@
         android:icon="@drawable/ic_baseline_favorite_24"/>
 
     <item
-        android:id="@+id/navigation_basket"
+        android:id="@+id/navigation_cart"
         android:title="@string/Shop"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_shopping_basket"/>

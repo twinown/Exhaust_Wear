@@ -40,7 +40,8 @@ public class StuffDetailFragment extends Fragment {
     List<VpModelStuff> vpModelStuff;
     LinearLayout linearLayout;
     int dotsCount;
-    int quantityNum;
+    int totalQuantity = 1;
+    int totalPrice = 0;
     List<ImageView> dots;
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
@@ -62,29 +63,30 @@ public class StuffDetailFragment extends Fragment {
         quantity = view.findViewById(R.id.quantity);
         addQuantity = view.findViewById(R.id.add_quantity);
         removeQuantity = view.findViewById(R.id.remove_quantity);
+        int numPrice =  Integer.parseInt( requireArguments().getString("price"));
+        totalPrice = numPrice * totalQuantity;
 
         addQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                quantityNum = quantityNum + 1;
-                String text = Integer.toString(quantityNum);
-                quantity.setText(text);
-                if (quantityNum > 5) {
-                    quantity.setText("5");
-                    Toast.makeText(getActivity(), "Максимальное количсетво товара для заказа - 5", Toast.LENGTH_SHORT).show();
-                }
+                if (totalQuantity<5){
+                    totalQuantity++;
+                    quantity.setText(String.valueOf(totalQuantity));
+                    totalPrice = numPrice * totalQuantity;
+                }else Toast.makeText(getActivity(), "Максимальное количсетво товара для заказа - 5",
+                        Toast.LENGTH_SHORT).show();
+
             }
         });
         removeQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                quantityNum = quantityNum - 1;
-                String text = Integer.toString(quantityNum);
-                quantity.setText(text);
-                if (quantityNum < 0) {
-                    quantity.setText("0");
-                    Toast.makeText(getActivity(), "Тормози", Toast.LENGTH_SHORT).show();
-                }
+                if (totalQuantity > 1){
+                    totalQuantity--;
+                    quantity.setText(String.valueOf(totalQuantity));
+                    totalPrice = numPrice * totalQuantity;
+                } else Toast.makeText(getActivity(), "Лучше больше, чем нуль",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -117,6 +119,8 @@ public class StuffDetailFragment extends Fragment {
         description.setText(requireArguments().getString("description"));
         size.setText(requireArguments().getString("size"));
 
+
+
         //making dots
         linearLayout = view.findViewById(R.id.dots_lay);
         dotsCount = vpAdapterStuff.getItemCount();
@@ -144,7 +148,7 @@ public class StuffDetailFragment extends Fragment {
             }
         });
 
-//adding to cart
+        //adding to cart
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -161,14 +165,15 @@ public class StuffDetailFragment extends Fragment {
 
     private void addToCart() {
         //проверить , есть ли товар уже в корзине сначала
-        //если есть есть , написать , что уже добавлен
+        //если есть есть , сделать +1
         //иконка уже загорается
 
         final HashMap<String, Object> cartMap = new HashMap<>();
         cartMap.put("productName", requireArguments().getString("name"));
         cartMap.put("productImg", requireArguments().getString("img"));
         cartMap.put("productPrice", requireArguments().getString("price"));
-        cartMap.put("quantity", quantity.getText());
+        cartMap.put("productQuantity", quantity.getText());
+        cartMap.put("totalPrice", totalPrice);
         firebaseFirestore.collection("AddToCart").document(firebaseAuth.getCurrentUser().getUid())
                 .collection("CurrentUser").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
