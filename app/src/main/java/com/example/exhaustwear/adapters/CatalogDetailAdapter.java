@@ -55,7 +55,8 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
     @SuppressLint("CheckResult")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        Glide.with(context).load(list.get(position).getImg_url()).into(holder.imageView);
+        loadData(position, holder);
+       /* Glide.with(context).load(list.get(position).getImg_url()).into(holder.imageView);
         Glide.with(context).load(list.get(position).getImg_url2());
         Glide.with(context).load(list.get(position).getImg_url3());
         Glide.with(context).load(list.get(position).getImg_url4());
@@ -63,10 +64,14 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
         holder.name.setText(list.get(position).getName());
         holder.group.setText(list.get(position).getGroup());
         holder.description.setText(list.get(position).getDescription());
-        holder.size.setText(list.get(position).getSize());
+        holder.size.setText(list.get(position).getSize());*/
 
 
         //checking if collections exists
+        if (firebaseAuth.getCurrentUser() == null){
+            loadData(position, holder);
+        } else{
+            loadData(position, holder);
         firebaseFirestore.collection("AddToCart").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
                 .collection("CurrentUser").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -88,6 +93,9 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
                         }
                     }
                 });
+
+        }
+
 
         //packing fields for fragmentStuffDetail
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -219,6 +227,19 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
                                 });
             }
         });*/
+    }
+
+    @SuppressLint("CheckResult")
+    private void loadData(int position, ViewHolder holder) {
+        Glide.with(context).load(list.get(position).getImg_url()).into(holder.imageView);
+        Glide.with(context).load(list.get(position).getImg_url2());
+        Glide.with(context).load(list.get(position).getImg_url3());
+        Glide.with(context).load(list.get(position).getImg_url4());
+        holder.price.setText(list.get(position).getPrice());
+        holder.name.setText(list.get(position).getName());
+        holder.group.setText(list.get(position).getGroup());
+        holder.description.setText(list.get(position).getDescription());
+        holder.size.setText(list.get(position).getSize());
     }
 
     @Override
