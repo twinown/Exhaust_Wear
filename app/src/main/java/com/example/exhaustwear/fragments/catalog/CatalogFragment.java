@@ -29,6 +29,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class CatalogFragment extends Fragment {
@@ -38,10 +39,7 @@ public class CatalogFragment extends Fragment {
     RecyclerView recyclerView;
     List<CatalogModel> catalogModelList;
     CatalogAdapter catalogAdapter;
-
     ProgressBar progressBar;
-
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,

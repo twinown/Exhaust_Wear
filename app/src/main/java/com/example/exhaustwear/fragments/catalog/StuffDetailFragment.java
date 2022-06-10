@@ -168,19 +168,19 @@ public class StuffDetailFragment extends Fragment {
         //если есть есть , сделать +1
         //иконка уже загорается
 
-        final HashMap<String, Object> cartMap = new HashMap<>();
-        cartMap.put("productName", requireArguments().getString("name"));
-        cartMap.put("productImg", requireArguments().getString("img"));
-        cartMap.put("productPrice", requireArguments().getString("price"));
-        cartMap.put("productQuantity", quantity.getText());
-        cartMap.put("totalPrice", totalPrice);
-        firebaseFirestore.collection("AddToCart").document(firebaseAuth.getCurrentUser().getUid())
-                .collection("CurrentUser").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                        Toast.makeText(getActivity(), "Добавлено в корзину", Toast.LENGTH_SHORT).show();
-                    }
-                });
+            final HashMap<String, Object> cartMap = new HashMap<>();
+            cartMap.put("productName", requireArguments().getString("name"));
+            cartMap.put("productImg", requireArguments().getString("img"));
+            cartMap.put("productPrice", requireArguments().getString("price"));
+            cartMap.put("productQuantity", quantity.getText());
+            cartMap.put("totalPrice", totalPrice);
+            firebaseFirestore.collection("AddToCart").document(firebaseAuth.getCurrentUser().getUid())
+                    .collection("CurrentUser").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                            Toast.makeText(getActivity(), "Добавлено в корзину", Toast.LENGTH_SHORT).show();
+                        }
+                    });
     }
 }
 

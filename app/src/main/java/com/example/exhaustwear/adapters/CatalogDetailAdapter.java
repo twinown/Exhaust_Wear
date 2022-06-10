@@ -23,7 +23,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -37,6 +36,7 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
     List<CatalogDetailModel> list;
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
+
 
     public CatalogDetailAdapter(Context context, List<CatalogDetailModel> list) {
         this.context = context;
@@ -66,36 +66,33 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
         holder.description.setText(list.get(position).getDescription());
         holder.size.setText(list.get(position).getSize());*/
 
-
         //checking if collections exists
-        if (firebaseAuth.getCurrentUser() == null){
+        if (firebaseAuth.getCurrentUser() == null) {
             loadData(position, holder);
-        } else{
+        } else {
             loadData(position, holder);
-        firebaseFirestore.collection("AddToCart").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                .collection("CurrentUser").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            //if in the collection "CurrentUser" already exists chosen item show green cart in the concrete card
-                            firebaseFirestore.collection("AddToCart").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                                    .collection("CurrentUser").whereEqualTo("productName", list.get(position).getName())
-                                    .get().addOnCompleteListener(
-                                            new OnCompleteListener<QuerySnapshot>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                    if (!task.getResult().isEmpty()) {
-                                                        holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context,
-                                                                R.drawable.ic_baseline_add_shopping_cart_green));
+            firebaseFirestore.collection("AddToCart").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
+                    .collection("CurrentUser").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            if (!queryDocumentSnapshots.isEmpty()) {
+                                //if in the collection "CurrentUser" already exists chosen item show green cart in the concrete card
+                                firebaseFirestore.collection("AddToCart").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
+                                        .collection("CurrentUser").whereEqualTo("productName", list.get(position).getName())
+                                        .get().addOnCompleteListener(
+                                                new OnCompleteListener<QuerySnapshot>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                        if (!task.getResult().isEmpty()) {
+                                                            holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context,
+                                                                    R.drawable.ic_baseline_add_shopping_cart_green));
+                                                        }
                                                     }
-                                                }
-                                            });
+                                                });
+                            }
                         }
-                    }
-                });
-
+                    });
         }
-
 
         //packing fields for fragmentStuffDetail
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -114,63 +111,71 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
             }
         });
 
+      /*  holder.addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int num = 1;
+                String quantity = Integer.toString(num);
+                if (firebaseAuth.getCurrentUser() == null) {
+                    Toast.makeText(context, "Для добавления в корзину войдите в аккаунт", Toast.LENGTH_SHORT).show();
+                } else {
+                    final HashMap<String, Object> cartMap = new HashMap<>();
+                    cartMap.put("productName", list.get(position).getName());
+                    cartMap.put("productImg", list.get(position).getImg_url());
+                    cartMap.put("totalPrice", Integer.parseInt(list.get(position).getPrice()));
+                    cartMap.put("productQuantity", quantity);
+                    firebaseFirestore.collection("AddToCart").document(firebaseAuth.getCurrentUser().getUid())
+                            .collection("CurrentUser")
+                            .add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentReference> task) {
+                                    if (task.isSuccessful()){
+                                        holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context,
+                                                R.drawable.ic_baseline_add_shopping_cart_green));
+                                        Toast.makeText(context, "Добавлено в корзину", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }
+            }
+        });*/
+
         holder.addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebaseFirestore.collection("AddToCart").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                        .collection("CurrentUser").whereEqualTo("productName", list.get(position)
-                                .getName()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.getResult().isEmpty()){
-                                    int num = 1;
-                                    String quantity = Integer.toString(num);
-                                    if (firebaseAuth.getCurrentUser() == null) {
-                                        Toast.makeText(context, "Для добавления в корзину войдите в аккаунт", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        final HashMap<String, Object> cartMap = new HashMap<>();
-                                        cartMap.put("productName", list.get(position).getName());
-                                        cartMap.put("productImg", list.get(position).getImg_url());
-                                        cartMap.put("productPrice", list.get(position).getPrice());
-                                        cartMap.put("productQuantity", quantity);
-                                        firebaseFirestore.collection("AddToCart").document(firebaseAuth.getCurrentUser().getUid())
-                                                .collection("CurrentUser")
-                                                .add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                                                        if (task.isSuccessful()){
-                                                            holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context,
-                                                                    R.drawable.ic_baseline_add_shopping_cart_green));
-                                                            Toast.makeText(context, "Добавлено в корзину", Toast.LENGTH_SHORT).show();
+                //checking of the stuff`s existing by name
+                //if already exists remove it from db
+                //or add it
+                if (firebaseAuth.getCurrentUser() != null) {
+                    firebaseFirestore.collection("AddToCart").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
+                            .collection("CurrentUser").whereEqualTo("productName", list.get(position)
+                                    .getName()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.getResult().isEmpty()) {
+                                        int num = 1;
+                                        String quantity = Integer.toString(num);
+                                            final HashMap<String, Object> cartMap = new HashMap<>();
+                                            cartMap.put("productName", list.get(position).getName());
+                                            cartMap.put("productImg", list.get(position).getImg_url());
+                                            cartMap.put("totalPrice", Integer.parseInt(list.get(position).getPrice()));
+                                            cartMap.put("productQuantity", quantity);
+                                            firebaseFirestore.collection("AddToCart").document(firebaseAuth.getCurrentUser().getUid())
+                                                    .collection("CurrentUser")
+                                                    .add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                            if (task.isSuccessful()) {
+                                                                holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context,
+                                                                        R.drawable.ic_baseline_add_shopping_cart_green));
+                                                                Toast.makeText(context, "Добавлено в корзину", Toast.LENGTH_SHORT).show();
+                                                            }
                                                         }
-                                                    }
-                                                });
-                                    }
-                                } else{
-                                    //ОСТАВИТЬ ЭТО НА ПОТОМ, СНАЧАЛА ОБЫЧНАЯ КОРЗИНА, ТАМ УЖЕ ПОЙМЁМ, КАК ПОЛУЧИТЬ ЭТОТ СНАПЧОТ
-                                    //чтоб удалить товар по иконке
-
-                                                         /*   DocumentSnapshot documentSnapshot;
-
-                                                            for (DocumentSnapshot document: task.getResult().getD
-                                                                 ) {
-
-                                                            }*/
-                                    // y
-                                    firebaseFirestore.collection("AddToCart").document(firebaseAuth.getCurrentUser().getUid())
-                                            .collection("CurrentUser").document().delete()
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void unused) {
-                                                    holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context,
-                                                            R.drawable.ic_baseline_add_shopping_cart));
-                                                    Toast.makeText(context, "удалён", Toast.LENGTH_SHORT).show();
-                                                }
-                                            });
-
+                                                    });
+                                    } else Toast.makeText(context, "Товар уже в корзине", Toast.LENGTH_SHORT).show();
                                 }
-                            }
-                        });
+                            });
+                } else Toast.makeText(context, "Для добавления в корзину войдите в аккаунт", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -261,7 +266,6 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
             size = itemView.findViewById(R.id.nav_size);
             addToCart = itemView.findViewById(R.id.addToCart);
             addToFavourite = itemView.findViewById(R.id.addToFavourite);
-
         }
     }
 }

@@ -4,6 +4,13 @@ public class CatalogModel {
     String name;
     String img_url;
     String type;
+    String documentId;
+
+    public String getDocumentId() {
+        return documentId;
+    }
+    public void setDocumentId(String documentId) {
+    }
 
     public CatalogModel() {
     }
@@ -37,4 +44,6 @@ public class CatalogModel {
     public void setImg_url(String img_url) {
         this.img_url = img_url;
     }
+
+
 }
