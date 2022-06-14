@@ -1,10 +1,6 @@
 package com.example.exhaustwear.fragments;
 
 import android.annotation.SuppressLint;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -69,8 +64,7 @@ public class CartFragment extends Fragment {
 
         //count overTotalPrice
         overTotalAmount = view.findViewById(R.id.over_total_amount);
-        LocalBroadcastManager.getInstance(requireActivity())
-                .registerReceiver(mMessageReceiver, new IntentFilter("totalAmount"));
+
 
         cartModelList = new ArrayList<>();
         cartAdapter = new CartAdapter(getActivity(), cartModelList);
@@ -79,23 +73,21 @@ public class CartFragment extends Fragment {
         recyclerView.setAdapter(cartAdapter);
 
         //is collection exist ?
-       if (firebaseAuth.getCurrentUser() != null) {
-           firebaseFirestore.collection("AddToCart").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                   .collection("CurrentUser").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                       @Override
-                       public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                           if (queryDocumentSnapshots.isEmpty()) {
-                               visibilityEmpty();
-
-                           } else {
-                               loadingCart();
-                           }
-                       }
-                   });
-       } else visibilityEmpty();
+        if (firebaseAuth.getCurrentUser() != null) {
+            firebaseFirestore.collection("AddToCart").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
+                    .collection("CurrentUser").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            if (queryDocumentSnapshots.isEmpty()) {
+                                visibilityEmpty();
+                            } else {
+                                loadingCart();
+                            }
+                        }
+                    });
+        } else visibilityEmpty();
         return view;
     }
-
 
 
     private void loadingCart() {
@@ -119,6 +111,7 @@ public class CartFragment extends Fragment {
                                     cartAdapter.notifyDataSetChanged();
                                     progressBar.setVisibility(View.GONE);
                                 }
+                                calculateTotalAmount(cartModelList);
                             }
                         }
                     });
@@ -133,14 +126,14 @@ public class CartFragment extends Fragment {
         progressBar.setVisibility(View.GONE);
     }
 
-
-    // for counting overTotalPrice
-    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
-        @SuppressLint("SetTextI18n")
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            int totalBill = intent.getIntExtra("totalAmount", 0);
-            overTotalAmount.setText("К оплате: " + totalBill + " Р");
+    @SuppressLint("SetTextI18n")
+    private void calculateTotalAmount(List<CartModel> cartModelList) {
+        int totalAmount = 0;
+        for (CartModel cartModel : cartModelList
+        ) {
+            totalAmount += cartModel.getTotalPrice();
         }
-    };
+        overTotalAmount.setText("К оплате: " + totalAmount + " Руб.");
+    }
+
 }
