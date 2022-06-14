@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ваша корзина пуста :("
+            android:text="Ваша корзина пуста"
             android:textAllCaps="true"
             android:textColor="@color/card_background"
             android:textSize="25dp"

@@ -7,15 +7,19 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.example.exhaustwear.databinding.ActivityMainBinding;
+import com.example.exhaustwear.fragments.CartFragment;
 
 
 public class MainActivity extends AppCompatActivity {
+
     ActivityMainBinding binding;
+
 
     @SuppressLint({"NonConstantResourceId", "ResourceType"})
     @Override
@@ -36,7 +40,11 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_account,R.id.navigation_favourite,  R.id.navigation_basket).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);*/
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
+
+
     }
+
+
 
     //putting the icons in the top toolbar
     @Override

@@ -94,7 +94,7 @@ public class CartFragment extends Fragment {
         if (firebaseAuth.getCurrentUser() != null) {
             firebaseFirestore.collection("AddToCart").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
                     .collection("CurrentUser").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @SuppressLint("NotifyDataSetChanged")
+                        @SuppressLint({"NotifyDataSetChanged", "SetTextI18n"})
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
@@ -103,8 +103,10 @@ public class CartFragment extends Fragment {
                                     constraintLayout1.setVisibility(View.GONE);
                                     constraintLayout2.setVisibility(View.VISIBLE);
                                     relativeLayout.setVisibility(View.VISIBLE);
+
                                     // id for removing item from cart
                                     String documentId = documentSnapshot.getId();
+
                                     CartModel cartModel = documentSnapshot.toObject(CartModel.class);
                                     Objects.requireNonNull(cartModel).setDocumentId(documentId);
                                     cartModelList.add(cartModel);
@@ -112,11 +114,14 @@ public class CartFragment extends Fragment {
                                     progressBar.setVisibility(View.GONE);
                                 }
                                 calculateTotalAmount(cartModelList);
+                                
+                                }
                             }
-                        }
+
                     });
         } else visibilityEmpty();
     }
+
 
     //for layouts` visibility
     private void visibilityEmpty() {

@@ -2,6 +2,7 @@ package com.example.exhaustwear.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -30,12 +35,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     List<CartModel> cartModelList;
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
+    CartFragment cartFragment;
+
 
     public CartAdapter(Context context, List<CartModel> cartModelList) {
         this.context = context;
         this.cartModelList = cartModelList;
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
+        cartFragment = new CartFragment();
 
     }
 
@@ -68,14 +76,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                         .collection("CurrentUser")
                         .document(cartModelList.get(position).getDocumentId())
                         .delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @SuppressLint("NotifyDataSetChanged")
+                            @SuppressLint({"NotifyDataSetChanged"})
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     cartModelList.remove(cartModelList.remove(position));
+
                                     notifyDataSetChanged();
                                     Toast.makeText(context, "Удалено из корзины", Toast.LENGTH_SHORT).show();
-
                                 } else {
                                     Toast.makeText(context, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
@@ -101,7 +109,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             quantity = itemView.findViewById(R.id.quantity_cart);
             image = itemView.findViewById(R.id.img_cart);
             deleteFromCart = itemView.findViewById(R.id.remove_from_cart);
-
         }
     }
+
+
+    @SuppressLint("SetTextI18n")
+    private void calculateTotalAmount(List<CartModel> cartModelList) {
+
+
+
+    }
+
+
+
 }
