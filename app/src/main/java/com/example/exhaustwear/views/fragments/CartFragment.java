@@ -1,4 +1,4 @@
-package com.example.exhaustwear.fragments;
+package com.example.exhaustwear.views.fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.exhaustwear.Model.CartModel;
+import com.example.exhaustwear.models.CartModel;
 import com.example.exhaustwear.R;
 import com.example.exhaustwear.adapters.CartAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;

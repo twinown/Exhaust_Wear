@@ -2,7 +2,6 @@ package com.example.exhaustwear.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +10,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.exhaustwear.Model.CartModel;
+import com.example.exhaustwear.models.CartModel;
 import com.example.exhaustwear.R;
-import com.example.exhaustwear.fragments.CartFragment;
+import com.example.exhaustwear.views.fragments.CartFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -79,7 +75,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     cartModelList.remove(cartModelList.remove(position));
-
+                                    Navigation.findNavController(view).navigate(R.id.action_cartFragment_self);
                                     notifyDataSetChanged();
                                     Toast.makeText(context, "Удалено из корзины", Toast.LENGTH_SHORT).show();
                                 } else {

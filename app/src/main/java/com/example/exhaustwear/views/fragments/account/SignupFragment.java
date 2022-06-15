@@ -1,4 +1,4 @@
-package com.example.exhaustwear.fragments.account;
+package com.example.exhaustwear.views.fragments.account;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.exhaustwear.R;
-import com.example.exhaustwear.Model.User;
+import com.example.exhaustwear.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

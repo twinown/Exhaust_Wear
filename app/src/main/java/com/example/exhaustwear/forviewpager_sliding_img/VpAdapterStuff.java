@@ -1,6 +1,5 @@
-package com.example.exhaustwear.forpager;
+package com.example.exhaustwear.forviewpager_sliding_img;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

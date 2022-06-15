@@ -1,35 +1,29 @@
-package com.example.exhaustwear.fragments.catalog;
+package com.example.exhaustwear.views.fragments.catalog;
 
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.Toast;
-
-import com.example.exhaustwear.Model.CatalogModel;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.exhaustwear.R;
 import com.example.exhaustwear.adapters.CatalogAdapter;
+import com.example.exhaustwear.databinding.FragmentCatalogBinding;
+import com.example.exhaustwear.models.CatalogModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 public class CatalogFragment extends Fragment {
@@ -39,7 +33,11 @@ public class CatalogFragment extends Fragment {
     RecyclerView recyclerView;
     List<CatalogModel> catalogModelList;
     CatalogAdapter catalogAdapter;
+
+
     ProgressBar progressBar;
+    FragmentCatalogBinding fragmentCatalogBinding;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -48,7 +46,10 @@ public class CatalogFragment extends Fragment {
         // Inflate the layout for this fragment
         Toolbar toolbar = requireActivity().findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(null);
-        view =  inflater.inflate(R.layout.fragment_catalog, container, false);
+
+        fragmentCatalogBinding = FragmentCatalogBinding.inflate(inflater, container, false);
+
+        view = inflater.inflate(R.layout.fragment_catalog, container, false);
         firebaseFirestore = FirebaseFirestore.getInstance();
         progressBar = view.findViewById(R.id.progress_bar);
         recyclerView = view.findViewById(R.id.cat_rec);
@@ -67,8 +68,8 @@ public class CatalogFragment extends Fragment {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()){
-                            for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
                                 CatalogModel catalogModel = queryDocumentSnapshot.toObject(CatalogModel.class);
                                 catalogModelList.add(catalogModel);
                                 catalogAdapter.notifyDataSetChanged();
@@ -81,6 +82,4 @@ public class CatalogFragment extends Fragment {
                 });
         return view;
     }
-
-
 }

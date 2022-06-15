@@ -1,4 +1,4 @@
-package com.example.exhaustwear.forpager;
+package com.example.exhaustwear.forviewpager_sliding_img;
 
 public class VpModelStuff {
     String img_url;

@@ -1,4 +1,4 @@
-package com.example.exhaustwear.Model;
+package com.example.exhaustwear.models;
 
 public class User {
     private String name;

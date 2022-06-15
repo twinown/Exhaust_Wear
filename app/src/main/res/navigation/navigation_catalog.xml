@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/CatalogFragment"
-        android:name="com.example.exhaustwear.fragments.catalog.CatalogFragment"
+        android:name="com.example.exhaustwear.views.fragments.catalog.CatalogFragment"
         tools:layout="@layout/fragment_catalog" >
         <action
             android:id="@+id/action_CatalogFragment_to_catalog_detail_Fragment"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/catalog_detail_Fragment"
-        android:name="com.example.exhaustwear.fragments.catalog.CatalogDetailFragment"
+        android:name="com.example.exhaustwear.views.fragments.catalog.CatalogDetailFragment"
         tools:layout="@layout/fragment_detail_catalog" >
         <action
             android:id="@+id/action_catalog_detail_Fragment_to_CatalogFragment"
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/stuffDetailFragment"
-        android:name="com.example.exhaustwear.fragments.catalog.StuffDetailFragment"
+        android:name="com.example.exhaustwear.views.fragments.catalog.StuffDetailFragment"
         tools:layout="@layout/fragment_stuff_detail" >
         <action
             android:id="@+id/action_stuffDetailFragment_to_catalog_detail_Fragment"

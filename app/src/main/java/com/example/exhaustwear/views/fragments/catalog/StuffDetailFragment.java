@@ -1,4 +1,4 @@
-package com.example.exhaustwear.fragments.catalog;
+package com.example.exhaustwear.views.fragments.catalog;
 
 
 import android.os.Bundle;
@@ -17,8 +17,8 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.exhaustwear.R;
-import com.example.exhaustwear.forpager.VpAdapterStuff;
-import com.example.exhaustwear.forpager.VpModelStuff;
+import com.example.exhaustwear.forviewpager_sliding_img.VpAdapterStuff;
+import com.example.exhaustwear.forviewpager_sliding_img.VpModelStuff;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;

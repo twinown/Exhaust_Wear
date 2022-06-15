@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/greys"
     android:orientation="vertical"
-    tools:context=".fragments.HomeFragment">
+    tools:context=".views.fragments.HomeFragment">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager2_home"

@@ -1,20 +1,18 @@
-package com.example.exhaustwear.fragments.catalog;
+package com.example.exhaustwear.views.fragments.catalog;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 
-import com.example.exhaustwear.Model.CatalogDetailModel;
+import com.example.exhaustwear.models.CatalogDetailModel;
 import com.example.exhaustwear.R;
 import com.example.exhaustwear.adapters.CatalogDetailAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;

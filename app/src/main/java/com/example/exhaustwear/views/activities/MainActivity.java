@@ -1,4 +1,4 @@
-package com.example.exhaustwear;
+package com.example.exhaustwear.views.activities;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -7,13 +7,12 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.example.exhaustwear.R;
 import com.example.exhaustwear.databinding.ActivityMainBinding;
-import com.example.exhaustwear.fragments.CartFragment;
 
 
 public class MainActivity extends AppCompatActivity {

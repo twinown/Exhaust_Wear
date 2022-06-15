@@ -1,4 +1,4 @@
-package com.example.exhaustwear.fragments;
+package com.example.exhaustwear.views.fragments;
 
 import android.os.Bundle;
 
@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.exhaustwear.R;
-import com.example.exhaustwear.fragments.catalog.CatalogFragment;
-import com.google.firebase.auth.FirebaseAuth;
 
 
 public class FavouriteFragment extends Fragment {

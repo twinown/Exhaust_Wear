@@ -1,4 +1,4 @@
-package com.example.exhaustwear.fragments.account;
+package com.example.exhaustwear.views.fragments.account;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;

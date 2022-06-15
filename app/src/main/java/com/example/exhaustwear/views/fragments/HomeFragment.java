@@ -1,4 +1,4 @@
-package com.example.exhaustwear.fragments;
+package com.example.exhaustwear.views.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.exhaustwear.R;
-import com.example.exhaustwear.forpager.VpAdapter;
-import com.example.exhaustwear.forpager.VpModel;
+import com.example.exhaustwear.forviewpager_sliding_img.VpAdapter;
+import com.example.exhaustwear.forviewpager_sliding_img.VpModel;
 
 import java.util.ArrayList;
 import java.util.List;

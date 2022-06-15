@@ -11,7 +11,7 @@
     android:paddingRight="@dimen/fragment_horizontal_margin"
     android:paddingBottom="@dimen/fragment_vertical_margin"
     android:background="@color/greys"
-    tools:context=".fragments.account.LoginFragment">
+    tools:context=".views.fragments.account.LoginFragment">
 
     <TextView
         android:id="@+id/textView2"
