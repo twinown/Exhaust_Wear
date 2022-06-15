@@ -114,14 +114,13 @@ public class CartFragment extends Fragment {
                                     progressBar.setVisibility(View.GONE);
                                 }
                                 calculateTotalAmount(cartModelList);
-                                
+
                                 }
                             }
 
                     });
         } else visibilityEmpty();
     }
-
 
     //for layouts` visibility
     private void visibilityEmpty() {

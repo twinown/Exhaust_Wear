@@ -37,14 +37,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     FirebaseAuth firebaseAuth;
     CartFragment cartFragment;
 
-
     public CartAdapter(Context context, List<CartModel> cartModelList) {
         this.context = context;
         this.cartModelList = cartModelList;
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         cartFragment = new CartFragment();
-
     }
 
     @NonNull
