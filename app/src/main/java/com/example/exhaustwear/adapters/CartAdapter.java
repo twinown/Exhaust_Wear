@@ -2,6 +2,7 @@ package com.example.exhaustwear.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.exhaustwear.models.CartModel;
 import com.example.exhaustwear.R;
-import com.example.exhaustwear.views.fragments.CartFragment;
+import com.example.exhaustwear.views.fragments.cart.CartFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,9 +55,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.totalPrice.setText(String.valueOf(cartModelList.get(position).getTotalPrice()));
         holder.quantity.setText(cartModelList.get(position).getProductQuantity());
 
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                
 
 
             }
@@ -66,8 +69,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.deleteFromCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebaseFirestore.collection("AddToCart").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                        .collection("CurrentUser")
+                firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
+                        .collection("AddToCart")
                         .document(cartModelList.get(position).getDocumentId())
                         .delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @SuppressLint({"NotifyDataSetChanged"})

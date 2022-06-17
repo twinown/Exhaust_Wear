@@ -22,7 +22,7 @@
         android:id="@+id/navigation_favourite"
         android:title="@string/Favourite"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_baseline_favorite_24"/>
+        android:icon="@drawable/ic_baseline_favorite_green"/>
 
     <item
         android:id="@+id/navigation_cart"

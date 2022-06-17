@@ -3,6 +3,7 @@ package com.example.exhaustwear.views.fragments.account;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import android.util.Patterns;
@@ -37,6 +38,8 @@ public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Toolbar toolbar = requireActivity().findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(null);
         view = inflater.inflate(R.layout.fragment_account, container, false);
         firebaseAuth = FirebaseAuth.getInstance();
         nameView = view.findViewById(R.id.correct_name);
@@ -70,14 +73,12 @@ public class AccountFragment extends Fragment {
                     firebaseAuth.signOut();
                     Navigation.findNavController(view).navigate(R.id.loginFragment);
                     Toast.makeText(getActivity(), "Вы вышли из аккаунта", Toast.LENGTH_SHORT).show();
-
             }
         });
      return view;
     }
 
-
-    //if user doesnt login, open login fragment
+    //if user doesn't login, open login fragment
     //else open account
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

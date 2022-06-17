@@ -6,10 +6,17 @@
     app:startDestination="@id/cartFragment">
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.example.exhaustwear.views.fragments.CartFragment"
+        android:name="com.example.exhaustwear.views.fragments.cart.CartFragment"
         tools:layout="@layout/fragment_cart" >
         <action
             android:id="@+id/action_cartFragment_self"
             app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_placedOrderFragment"
+            app:destination="@id/placedOrderFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/placedOrderFragment"
+        android:name="com.example.exhaustwear.views.fragments.cart.PlacedOrderFragment"
+        tools:layout="@layout/fragment_placed_order" />
 </navigation>

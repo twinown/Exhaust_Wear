@@ -1,6 +1,9 @@
 package com.example.exhaustwear.models;
 
-public class CartModel {
+
+
+
+public class CartModel{
     String productImg;
     String productName;
     String productPrice;
@@ -18,6 +21,7 @@ public class CartModel {
         this.productQuantity = productQuantity;
         this.totalPrice = totalPrice;
     }
+
 
     public String getDocumentId() {
         return documentId;
@@ -66,5 +70,7 @@ public class CartModel {
     public void setProductPrice(String productPrice) {
         this.productPrice = productPrice;
     }
+
+
 }
 

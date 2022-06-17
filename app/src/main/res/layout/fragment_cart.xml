@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/greys"
-    tools:context=".views.fragments.CartFragment">
+    tools:context=".views.fragments.cart.CartFragment">
 
     <ProgressBar
         android:id="@+id/progress_bar_cart"
