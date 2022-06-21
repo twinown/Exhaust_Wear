@@ -69,11 +69,11 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
         //checking if collections exist
         if (firebaseAuth.getCurrentUser() == null) {
             loadData(position, holder);
-        } else
+        } else {
             //loadData(position, holder);
             checkingCollEx(position, "AddToFavourite", holder, R.drawable.ic_baseline_favorite_green);
-        checkingCollEx(position, "AddToCart", holder, R.drawable.ic_baseline_add_shopping_cart_green);
-
+            checkingCollEx(position, "AddToCart", holder, R.drawable.ic_baseline_add_shopping_cart_green);
+        }
 
 
             /*firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
@@ -181,39 +181,6 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
                 //if already exists say about it
                 //or add it
                 addingToCart(position, holder);
-                /*if (firebaseAuth.getCurrentUser() != null) {
-                    firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                            .collection("AddToCart").whereEqualTo("productName", list.get(position)
-                                    .getName()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    if (task.getResult().isEmpty()) {
-                                        int num = 1;
-                                        String quantity = Integer.toString(num);
-                                        final HashMap<String, Object> cartMap = new HashMap<>();
-                                        cartMap.put("productName", list.get(position).getName());
-                                        cartMap.put("productImg", list.get(position).getImg_url());
-                                        cartMap.put("productPrice", list.get(position).getPrice());
-                                        cartMap.put("totalPrice", Integer.parseInt(list.get(position).getPrice()));
-                                        cartMap.put("productQuantity", quantity);
-                                        firebaseFirestore.collection("CurrentUser").document(firebaseAuth.getCurrentUser().getUid())
-                                                .collection("AddToCart")
-                                                .add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                                                        if (task.isSuccessful()) {
-                                                            holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context,
-                                                                    R.drawable.ic_baseline_add_shopping_cart_green));
-                                                            Toast.makeText(context, "Добавлено в корзину", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    }
-                                                });
-                                    } else
-                                        Toast.makeText(context, "Товар уже в корзине", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                } else
-                    Toast.makeText(context, "Для добавления в корзину войдите в аккаунт", Toast.LENGTH_SHORT).show();*/
             }
         });
 
@@ -392,29 +359,31 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
     }
 
     private void checkingCollEx(int position, String collection, ViewHolder holder, int id) {
-        firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                .collection(collection).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            //if in the collection "CurrentUser" already exists chosen item show green cart in the concrete card
-                            firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                                    .collection(collection).whereEqualTo("productName", list.get(position).getName())
-                                    .get().addOnCompleteListener(
-                                            new OnCompleteListener<QuerySnapshot>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                    if (!task.getResult().isEmpty()) {
-                                                        if (collection.equals("AddToCart")){
-                                                            holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context, id));
-                                                        }else holder.addToFavourite.setImageDrawable(ContextCompat.getDrawable(context, id));
-
-
+            firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
+                    .collection(collection).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            if (!queryDocumentSnapshots.isEmpty()) {
+                                //if in the collection "CurrentUser" already exists chosen item show green cart in the concrete card
+                                firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
+                                        .collection(collection).whereEqualTo("productName", list.get(position).getName())
+                                        .get().addOnCompleteListener(
+                                                new OnCompleteListener<QuerySnapshot>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                        if (!task.getResult().isEmpty()) {
+                                                            if (collection.equals("AddToCart")){
+                                                                holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context, id));
+                                                            }else holder.addToFavourite.setImageDrawable(ContextCompat.getDrawable(context, id));
+                                                        }
                                                     }
-                                                }
-                                            });
+                                                });
+                            }
                         }
-                    }
-                });
+                    });
+
+
+
+
     }
 }

@@ -14,9 +14,17 @@
         <action
             android:id="@+id/action_cartFragment_to_placedOrderFragment"
             app:destination="@id/placedOrderFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_stuffDetailFragment1"
+            app:destination="@id/stuffDetailFragment1" />
     </fragment>
     <fragment
         android:id="@+id/placedOrderFragment"
         android:name="com.example.exhaustwear.views.fragments.cart.PlacedOrderFragment"
         tools:layout="@layout/fragment_placed_order" />
+    <fragment
+        android:id="@+id/stuffDetailFragment1"
+        android:name="com.example.exhaustwear.views.fragments.catalog.StuffDetailFragment"
+        android:label="fragment_stuff_detail"
+        tools:layout="@layout/fragment_stuff_detail" />
 </navigation>

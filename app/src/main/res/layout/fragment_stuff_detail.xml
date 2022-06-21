@@ -44,6 +44,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/stuff_favourite"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_alignParentEnd="true"

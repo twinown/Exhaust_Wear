@@ -22,16 +22,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.exhaustwear.R;
 import com.example.exhaustwear.adapters.CartAdapter;
 import com.example.exhaustwear.models.CartModel;
-import com.example.exhaustwear.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -57,8 +54,10 @@ public class CartFragment extends Fragment {
     ConstraintLayout constraintLayout2;
     RelativeLayout relativeLayout;
     Button buyNow;
-
     DatabaseReference databaseReference;
+    String name;
+    String email;
+    String phone;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,24 +68,22 @@ public class CartFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_cart, container, false);
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-      //  getUser();
         constraintLayout1 = view.findViewById(R.id.constraint1);
         constraintLayout2 = view.findViewById(R.id.constraint2);
         relativeLayout = view.findViewById(R.id.relative);
         progressBar = view.findViewById(R.id.progress_bar_cart);
         recyclerView = view.findViewById(R.id.cart_rec);
         buyNow = view.findViewById(R.id.make_an_order_butt);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         overTotalAmount = view.findViewById(R.id.over_total_amount);
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         cartModelList = new ArrayList<>();
         cartAdapter = new CartAdapter(getActivity(), cartModelList);
         // for saving recyclerview position
         cartAdapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
         recyclerView.setAdapter(cartAdapter);
-
+        getUser();
         //is collection exist ?
+        //if true, show cards
         if (firebaseAuth.getCurrentUser() != null) {
             firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
                     .collection("AddToCart").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -106,7 +103,6 @@ public class CartFragment extends Fragment {
             public void onClick(View view) {
                 makingOrder();
                 Navigation.findNavController(view).navigate(R.id.action_cartFragment_to_placedOrderFragment);
-
             }
         });
 
@@ -173,17 +169,18 @@ public class CartFragment extends Fragment {
                 cartMap.put("productPrice", cartModel.getProductPrice());
                 cartMap.put("productQuantity", cartModel.getProductQuantity());
                 cartMap.put("totalPrice", cartModel.getTotalPrice());
-              /*  cartMap.put("nameUser",);
-                cartMap.put("emailUser", );
-                cartMap.put("phoneUser", );*/
+                cartMap.put("nameUser", name);
+                cartMap.put("emailUser", email);
+                cartMap.put("phoneUser", phone);
                 firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
                         .collection("ClientsOrder").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(getActivity(), "Заказ оформлен!", Toast.LENGTH_SHORT).show();
-                                }else
-                                    Toast.makeText(getActivity(), "Ошибка: "+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                                } else
+                                    Toast.makeText(getActivity(), "Ошибка: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
 
                             }
                         });
@@ -192,28 +189,26 @@ public class CartFragment extends Fragment {
     }
 
     private void getUser() {
-        String userId = firebaseAuth.getUid();
-        assert userId != null;
-        databaseReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                if (user != null) {
-                    Bundle bundle = new Bundle();
-                    String name = user.getName();
-                    String email = user.getEmail();
-                    String phone = user.getPhone();
-                    bundle.putString("nameUser", name);
-                    bundle.putString("emailUser", email);
-                    bundle.putString("phoneUser", phone);
+        if (firebaseAuth.getCurrentUser() != null) {
+            String userId = firebaseAuth.getCurrentUser().getUid();
+            databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+
+            databaseReference.child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        if (task.getResult().exists()) {
+                            DataSnapshot dataSnapshot = task.getResult();
+                            name = String.valueOf(dataSnapshot.child("name").getValue());
+                            email = String.valueOf(dataSnapshot.child("email").getValue());
+                            phone = String.valueOf(dataSnapshot.child("phone").getValue());
+
+                        } else
+                            Toast.makeText(getContext(), "Error " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+
+                    } else Toast.makeText(getContext(), "Error " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+            });
+        }
     }
-
-
 }

@@ -17,10 +17,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.exhaustwear.models.CartModel;
 import com.example.exhaustwear.R;
+import com.example.exhaustwear.models.User;
 import com.example.exhaustwear.views.fragments.cart.CartFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
@@ -32,15 +39,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     List<CartModel> cartModelList;
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
-    CartFragment cartFragment;
-
     public CartAdapter(Context context, List<CartModel> cartModelList) {
         this.context = context;
         this.cartModelList = cartModelList;
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
-        cartFragment = new CartFragment();
+
     }
+
+
 
     @NonNull
     @Override
@@ -59,6 +66,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_cartFragment_to_stuffDetailFragment1);
                 
 
 
@@ -108,15 +116,4 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             deleteFromCart = itemView.findViewById(R.id.remove_from_cart);
         }
     }
-
-
-    @SuppressLint("SetTextI18n")
-    private void calculateTotalAmount(List<CartModel> cartModelList) {
-
-
-
-    }
-
-
-
 }

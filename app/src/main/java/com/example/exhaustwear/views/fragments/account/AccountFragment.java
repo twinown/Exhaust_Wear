@@ -105,6 +105,7 @@ public class AccountFragment extends Fragment {
                         nameView.setText(name);
                         emailView.setText(email);
                         phoneView.setText(phone);
+
                     }
                 }
 
@@ -115,6 +116,8 @@ public class AccountFragment extends Fragment {
             });
         }
     }
+
+
 
     //for updating info about user
     // changing is happening in database too
