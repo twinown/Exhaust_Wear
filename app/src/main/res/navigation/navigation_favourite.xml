@@ -13,5 +13,12 @@
         <action
             android:id="@+id/action_favouriteFragment_self"
             app:destination="@id/favouriteFragment" />
+        <action
+            android:id="@+id/action_favouriteFragment_to_stuffDetailFragment2"
+            app:destination="@id/stuffDetailFragment2" />
     </fragment>
+    <fragment
+        android:id="@+id/stuffDetailFragment2"
+        android:name="com.example.exhaustwear.views.fragments.catalog.StuffDetailFragment"
+        tools:layout="@layout/fragment_stuff_detail" />
 </navigation>

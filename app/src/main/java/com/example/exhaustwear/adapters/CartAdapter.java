@@ -17,8 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.exhaustwear.models.CartModel;
 import com.example.exhaustwear.R;
+import com.example.exhaustwear.models.CatalogDetailModel;
 import com.example.exhaustwear.models.User;
 import com.example.exhaustwear.views.fragments.cart.CartFragment;
+import com.example.exhaustwear.views.fragments.catalog.StuffDetailFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,12 +41,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     List<CartModel> cartModelList;
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
+   ImageView imageView;
     public CartAdapter(Context context, List<CartModel> cartModelList) {
         this.context = context;
         this.cartModelList = cartModelList;
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
-
     }
 
 
@@ -64,12 +66,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_cartFragment_to_stuffDetailFragment1);
-                
-
-
+                Bundle bundle = new Bundle();
+                bundle.putString("price",String.valueOf(cartModelList.get(position).getProductPrice()));
+                bundle.putString("img", cartModelList.get(position).getProductImg());
+                bundle.putString("description",cartModelList.get(position).getProductName());
+                bundle.putString("name",cartModelList.get(position).getProductName());
+                Navigation.findNavController(view).navigate(R.id.action_cartFragment_to_stuffDetailFragment1, bundle);
             }
         });
 

@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_CatalogFragment_to_catalog_detail_Fragment"
             app:destination="@id/catalog_detail_Fragment" />
+        <action
+            android:id="@+id/action_CatalogFragment_to_catalogSearchFragment"
+            app:destination="@id/catalogSearchFragment" />
     </fragment>
     <fragment
         android:id="@+id/catalog_detail_Fragment"
@@ -31,5 +34,14 @@
         <action
             android:id="@+id/action_stuffDetailFragment_to_catalog_detail_Fragment"
             app:destination="@id/catalog_detail_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/catalogSearchFragment"
+        android:name="com.example.exhaustwear.views.fragments.catalog.CatalogSearchFragment"
+        android:label="fragment_catalog_search"
+        tools:layout="@layout/fragment_catalog_search" >
+        <action
+            android:id="@+id/action_catalogSearchFragment_to_CatalogFragment"
+            app:destination="@id/CatalogFragment" />
     </fragment>
 </navigation>

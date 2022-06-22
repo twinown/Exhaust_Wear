@@ -2,6 +2,7 @@ package com.example.exhaustwear.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,22 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
         Glide.with(context).load(favouriteModelList.get(position).getProductImg()).into(holder.stuffImage);
         holder.name.setText(favouriteModelList.get(position).getProductName());
         holder.price.setText(String.valueOf(favouriteModelList.get(position).getProductPrice()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("price",String.valueOf(favouriteModelList.get(position).getProductPrice()));
+                bundle.putString("img", favouriteModelList.get(position).getProductImg());
+                bundle.putString("description",favouriteModelList.get(position).getProductName());
+                bundle.putString("name",favouriteModelList.get(position).getProductName());
+                Navigation.findNavController(view).navigate(R.id.action_favouriteFragment_to_stuffDetailFragment2, bundle);
+            }
+        });
+
+
+
 
         //deleting from favourite
         holder.deleteFromFav.setOnClickListener(new View.OnClickListener() {

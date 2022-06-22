@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.exhaustwear.R;
-import com.example.exhaustwear.forviewpager_sliding_img.VpAdapter;
-import com.example.exhaustwear.forviewpager_sliding_img.VpModel;
+import com.example.exhaustwear.forviewpager_sliding_img.VpAdapterHome;
+import com.example.exhaustwear.forviewpager_sliding_img.VpModelHome;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,10 +44,10 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
         viewPager2 = view.findViewById(R.id.view_pager2_home);
-        List<VpModel> vpModels = new ArrayList<>();
-        vpModels.add(new VpModel(R.drawable.one));
-        vpModels.add(new VpModel(R.drawable.two));
-        viewPager2.setAdapter(new VpAdapter(vpModels, viewPager2));
+        List<VpModelHome> vpModelHomes = new ArrayList<>();
+        vpModelHomes.add(new VpModelHome(R.drawable.one));
+        vpModelHomes.add(new VpModelHome(R.drawable.two));
+        viewPager2.setAdapter(new VpAdapterHome(vpModelHomes, viewPager2));
         viewPager2.setClipChildren(false);
         viewPager2.setOffscreenPageLimit(1);
         viewPager2.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);

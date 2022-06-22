@@ -25,6 +25,5 @@
     <fragment
         android:id="@+id/stuffDetailFragment1"
         android:name="com.example.exhaustwear.views.fragments.catalog.StuffDetailFragment"
-        android:label="fragment_stuff_detail"
         tools:layout="@layout/fragment_stuff_detail" />
 </navigation>

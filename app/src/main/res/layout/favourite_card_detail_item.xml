@@ -79,14 +79,17 @@
                 android:textStyle="bold"
                 tools:ignore="RtlHardcoded" />
 
-            <ImageView
-                android:id="@+id/deleteFavourite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_delete_24"
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-
-                />
+                <ImageView
+                    android:id="@+id/deleteFavourite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_delete_24"
+                    android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
 
         </LinearLayout>
 

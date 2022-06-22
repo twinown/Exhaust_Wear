@@ -4,10 +4,13 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
@@ -18,6 +21,7 @@ import com.example.exhaustwear.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
+    View view;
 
 
     @SuppressLint({"NonConstantResourceId", "ResourceType"})
@@ -50,16 +54,21 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.topbar_menu, menu);
         return super.onCreateOptionsMenu(menu);
+
     }
 
     //for searching
-    @Override
+  /*  @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
       if (item.getItemId()==R.id.search){
-            Toast.makeText(this, "Do it later", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(this, "Do it later", Toast.LENGTH_SHORT).show();
+       //   Navigation.findNavController(this, R.id.navigation_catalog).navigate(R.id.action_CatalogFragment_to_catalogSearchFragment);
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
+
+
+
     }
 
 

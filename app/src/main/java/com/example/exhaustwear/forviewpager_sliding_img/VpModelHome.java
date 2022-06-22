@@ -2,11 +2,11 @@ package com.example.exhaustwear.forviewpager_sliding_img;
 
 import android.net.Uri;
 
-public class VpModel {
+public class VpModelHome {
     private  int image;
     private Uri imageUri;
 
-    public VpModel(int image) {
+    public VpModelHome(int image) {
         this.image = image;
     }
 

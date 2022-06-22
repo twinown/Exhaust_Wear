@@ -51,6 +51,7 @@ public class StuffDetailFragment extends Fragment {
     ImageView addQuantity, removeQuantity, addToFavourite;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,15 +70,11 @@ public class StuffDetailFragment extends Fragment {
         viewPager2 = view.findViewById(R.id.vp2_stuff);
         vpModelStuff = new ArrayList<>();
         vpAdapterStuff = new VpAdapterStuff(getActivity(), vpModelStuff, viewPager2);
-
         checkingExc();
-
-
         int numPrice = Integer.parseInt(requireArguments().getString("price"));
         totalPrice = numPrice * totalQuantity;
 
         addQuantity.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 addQuant(numPrice);
@@ -85,6 +82,7 @@ public class StuffDetailFragment extends Fragment {
 
             }
         });
+
         removeQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

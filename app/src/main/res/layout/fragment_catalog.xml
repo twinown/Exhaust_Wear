@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     android:background="@color/greys"
     tools:context=".views.fragments.catalog.CatalogFragment">
+<!--
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/search_view_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cat_rec"
+        android:queryHint="Поик по каталогу..."
+        android:iconifiedByDefault="false"
+       />
+-->
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -18,19 +34,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cat_rec"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cat_rec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="65dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <!--    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_rec"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="6dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-           >
+            app:layout_constraintTop_toBottomOf="@+id/cat_rec">
 
-        </androidx.recyclerview.widget.RecyclerView>
-
-
+        </androidx.recyclerview.widget.RecyclerView>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>

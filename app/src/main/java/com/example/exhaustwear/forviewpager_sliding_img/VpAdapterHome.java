@@ -16,14 +16,14 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.exhaustwear.R;
 import java.util.List;
 
-public class VpAdapter extends RecyclerView.Adapter<VpAdapter.ViewHolder> {
+public class VpAdapterHome extends RecyclerView.Adapter<VpAdapterHome.ViewHolder> {
 
-    List<VpModel> vpModels;
+    List<VpModelHome> vpModelHomes;
     ViewPager2 viewPager2;
     Handler slideHandler = new Handler();
 
-    public VpAdapter(List<VpModel> vpModels, ViewPager2 viewPager2) {
-        this.vpModels = vpModels;
+    public VpAdapterHome(List<VpModelHome> vpModelHomes, ViewPager2 viewPager2) {
+        this.vpModelHomes = vpModelHomes;
         this.viewPager2 = viewPager2;
     }
 
@@ -38,7 +38,7 @@ public class VpAdapter extends RecyclerView.Adapter<VpAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.imageView.setImageResource(vpModels.get(position).getImage());
+        holder.imageView.setImageResource(vpModelHomes.get(position).getImage());
         //for making backLoop in viewPager2
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -69,7 +69,7 @@ public class VpAdapter extends RecyclerView.Adapter<VpAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return vpModels.size();
+        return vpModelHomes.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
