@@ -4,13 +4,10 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
@@ -21,7 +18,7 @@ import com.example.exhaustwear.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-    View view;
+
 
 
     @SuppressLint({"NonConstantResourceId", "ResourceType"})
@@ -58,14 +55,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //for searching
-  /*  @Override
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-      if (item.getItemId()==R.id.search){
+  //    if (item.getItemId()==R.id.search){
           //  Toast.makeText(this, "Do it later", Toast.LENGTH_SHORT).show();
        //   Navigation.findNavController(this, R.id.navigation_catalog).navigate(R.id.action_CatalogFragment_to_catalogSearchFragment);
-        }
+       /*   FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+          fragmentTransaction.add(R.id.nav_host_container, new SearchFragment()).hide(new SearchFragment()).show(new SearchFragment()).addToBackStack("").commit();*/
+       //   fragmentTransaction.replace(, new SearchFragment()).addToBackStack("").commit();
+  //    }
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
 
 

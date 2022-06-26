@@ -10,5 +10,4 @@
     <include app:graph="@navigation/navigation_account" />
 
 
-
 </navigation>

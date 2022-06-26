@@ -13,8 +13,8 @@
             android:id="@+id/action_CatalogFragment_to_catalog_detail_Fragment"
             app:destination="@id/catalog_detail_Fragment" />
         <action
-            android:id="@+id/action_CatalogFragment_to_catalogSearchFragment"
-            app:destination="@id/catalogSearchFragment" />
+            android:id="@+id/action_CatalogFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/catalog_detail_Fragment"
@@ -34,14 +34,19 @@
         <action
             android:id="@+id/action_stuffDetailFragment_to_catalog_detail_Fragment"
             app:destination="@id/catalog_detail_Fragment" />
+        <action
+            android:id="@+id/action_stuffDetailFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
-        android:id="@+id/catalogSearchFragment"
-        android:name="com.example.exhaustwear.views.fragments.catalog.CatalogSearchFragment"
-        android:label="fragment_catalog_search"
-        tools:layout="@layout/fragment_catalog_search" >
+        android:id="@+id/searchFragment"
+        android:name="com.example.exhaustwear.views.fragments.catalog.SearchFragment"
+        tools:layout="@layout/fragment_search" >
         <action
-            android:id="@+id/action_catalogSearchFragment_to_CatalogFragment"
+            android:id="@+id/action_searchFragment_to_stuffDetailFragment"
+            app:destination="@id/stuffDetailFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_CatalogFragment"
             app:destination="@id/CatalogFragment" />
     </fragment>
 </navigation>

@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.exhaustwear.R;
-import com.example.exhaustwear.models.CatalogDetailModel;
+import com.example.exhaustwear.models.SearchModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -30,15 +30,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdapter.ViewHolder> {
-
+public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
     Context context;
-    List<CatalogDetailModel> list;
+    List<SearchModel> list;
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
 
 
-    public CatalogDetailAdapter(Context context, List<CatalogDetailModel> list) {
+    public SearchAdapter(Context context, List<SearchModel> list) {
         this.context = context;
         this.list = list;
         firebaseAuth = FirebaseAuth.getInstance();
@@ -47,14 +46,14 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SearchAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(
-                LayoutInflater.from(parent.getContext()).inflate(R.layout.catalog_card_detail_item, parent, false));
+                LayoutInflater.from(parent.getContext()).inflate(R.layout.card_search_item, parent, false));
     }
 
     @SuppressLint("CheckResult")
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull SearchAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         loadData(position, holder);
 
 
@@ -134,13 +133,13 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
         bundle.putString("description", list.get(position).getDescription());
         bundle.putString("size", list.get(position).getSize());
         bundle.putString("name", list.get(position).getName());
-        Navigation.findNavController(view).navigate(R.id.action_catalog_detail_Fragment_to_stuffDetailFragment, bundle);
 
+        Navigation.findNavController(view).navigate(R.id.action_searchFragment_to_stuffDetailFragment, bundle);
     }
 
 
     @SuppressLint("CheckResult")
-    private void loadData(int position, ViewHolder holder) {
+    private void loadData(int position, SearchAdapter.ViewHolder holder) {
         Glide.with(context).load(list.get(position).getImg_url()).into(holder.imageView);
         Glide.with(context).load(list.get(position).getImg_url2());
         Glide.with(context).load(list.get(position).getImg_url3());
@@ -152,7 +151,7 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
         holder.size.setText(list.get(position).getSize());
     }
 
-    private void addingToFavourite(int position, ViewHolder holder) {
+    private void addingToFavourite(int position, SearchAdapter.ViewHolder holder) {
         if (firebaseAuth.getCurrentUser() != null) {
             firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
                     .collection("AddToFavourite").whereEqualTo("productName", list.get(position)
@@ -185,7 +184,7 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
     }
 
 
-    private void addingToCart(int position, ViewHolder holder) {
+    private void addingToCart(int position, SearchAdapter.ViewHolder holder) {
         if (firebaseAuth.getCurrentUser() != null) {
             firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
                     .collection("AddToCart").whereEqualTo("productName", list.get(position)
@@ -221,29 +220,29 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
             Toast.makeText(context, "Для добавления в корзину войдите в аккаунт", Toast.LENGTH_SHORT).show();
     }
 
-    private void checkingCollEx(int position, String collection, ViewHolder holder, int id) {
-            firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                    .collection(collection).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                        @Override
-                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                            if (!queryDocumentSnapshots.isEmpty()) {
-                                //if in the collection "CurrentUser" already exists chosen item show green cart in the concrete card
-                                firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                                        .collection(collection).whereEqualTo("productName", list.get(position).getName())
-                                        .get().addOnCompleteListener(
-                                                new OnCompleteListener<QuerySnapshot>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                        if (!task.getResult().isEmpty()) {
-                                                            if (collection.equals("AddToCart")){
-                                                                holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context, id));
-                                                            }else holder.addToFavourite.setImageDrawable(ContextCompat.getDrawable(context, id));
-                                                        }
+    private void checkingCollEx(int position, String collection, SearchAdapter.ViewHolder holder, int id) {
+        firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
+                .collection(collection).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            //if in the collection "CurrentUser" already exists chosen item show green cart in the concrete card
+                            firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
+                                    .collection(collection).whereEqualTo("productName", list.get(position).getName())
+                                    .get().addOnCompleteListener(
+                                            new OnCompleteListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                    if (!task.getResult().isEmpty()) {
+                                                        if (collection.equals("AddToCart")){
+                                                            holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context, id));
+                                                        }else holder.addToFavourite.setImageDrawable(ContextCompat.getDrawable(context, id));
                                                     }
-                                                });
-                            }
+                                                }
+                                            });
                         }
-                    });
+                    }
+                });
 
 
 

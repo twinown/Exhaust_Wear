@@ -10,14 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,12 +49,15 @@ public class CatalogFragment extends Fragment {
     List<CatalogModel> catalogModelList;
     CatalogAdapter catalogAdapter;
     ProgressBar progressBar;
+    ImageView imageView;
+    LinearLayout linearLayout;
 
+
+   /* private List<CatalogDetailModel> catalogDetailModelList;
+    private RecyclerView recyclerViewSearch;
+    private CatalogDetailAdapter catalogDetailAdapter;
     SearchView searchView;
-   // List<CatalogDetailModel> catalogDetailModelList;
-  //  CatalogDetailAdapter catalogDetailAdapter;
-   RecyclerView recyclerViewSearch;
-
+*/
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -92,59 +98,64 @@ public class CatalogFragment extends Fragment {
                         }
                     }
                 });
-/*
 
         //for searching
-      //  catalogDetailAdapter = new CatalogDetailAdapter(getContext(), catalogDetailModelList);
-        recyclerViewSearch = view.findViewById(R.id.search_rec);
-        recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerViewSearch.setAdapter(catalogAdapter);
-        recyclerViewSearch.setHasFixedSize(true);
-//catalogDetailModelList = new ArrayList<>();
-        searchView = view.findViewById(R.id.searchView);
-        searchView.clearFocus();
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        linearLayout = view.findViewById(R.id.linear_lin);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String s) {
-
-                //showStuff(s);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-searchProduct(s);
-                return false;
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_CatalogFragment_to_searchFragment);
             }
         });
+/*imageView = view.findViewById(R.id.searchView);
+imageView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Navigation.findNavController(view).navigate(R.id.action_CatalogFragment_to_searchFragment);
+    }
+});*/
+     //   searchView = view.findViewById(R.id.searchView);
+     /*   recyclerViewSearch = view.findViewById(R.id.search_rec);
 
+        catalogDetailModelList = new ArrayList<>();
+        catalogDetailAdapter = new CatalogDetailAdapter(getContext(), catalogDetailModelList);
+        // recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewSearch.setLayoutManager(new GridLayoutManager(getContext(),2));
+        recyclerViewSearch.setAdapter(catalogDetailAdapter);
+        recyclerViewSearch.setHasFixedSize(true);
+        searchView.clearFocus();*/
+     /*   searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-
-
-*/
-
-
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Navigation.findNavController(view).navigate(R.id.action_CatalogFragment_to_searchFragment);
+              //  searchProduct(newText);
+                return false;
+            }
+        });*/
         return view;
     }
 
-
-
   /*  private void searchProduct(String name) {
+
         if (!name.isEmpty()) {
-            firebaseFirestore.collection("NavCategory").whereEqualTo("name", name).
+            firebaseFirestore.collection("NavCategoryDetailed").whereEqualTo("type", name).
                     get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @SuppressLint("NotifyDataSetChanged")
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful() && task.getResult() != null) {
-                                catalogModelList.clear();
-                                catalogAdapter.notifyDataSetChanged();
+                                catalogDetailModelList.clear();
+                                catalogDetailAdapter.notifyDataSetChanged();
                                 for (DocumentSnapshot doc: task.getResult().getDocuments()
-                                     ) {
-                                    CatalogModel catalogModel = doc.toObject(CatalogModel.class);
-                                    catalogModelList.add(catalogModel);
-                                    catalogAdapter.notifyDataSetChanged();
+                                ) {
+                                    CatalogDetailModel catalogDetailModel = doc.toObject(CatalogDetailModel.class);
+                                    catalogDetailModelList.add(catalogDetailModel);
+                                    catalogDetailAdapter.notifyDataSetChanged();
                                 }
                             }
                         }
@@ -152,21 +163,6 @@ searchProduct(s);
         }
     }*/
 
-
-   /* private void showStuff(String s) {
-        catalogDetailModelList = new ArrayList<>();
-        for (CatalogModel catalogModel: catalogModelList
-             ) {
-            if (catalogModel.getName().toLowerCase(Locale.ROOT).contains(s.toLowerCase(Locale.ROOT))){
-                catalogModelList.add(catalogModel);
-            }
-        }
-        if (catalogModelList.isEmpty()){
-            Toast.makeText(getContext(), "empty", Toast.LENGTH_SHORT).show();
-        } else {
-
-        }
-    }*/
 
 
 
