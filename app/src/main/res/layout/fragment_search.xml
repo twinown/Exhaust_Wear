@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.fragments.catalog.SearchFragment">
 
     <LinearLayout
@@ -11,31 +11,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <androidx.appcompat.widget.SearchView
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/searchView"
-            android:background="@drawable/search_view_background"
-            app:iconifiedByDefault="false"
-            app:defaultQueryHint="Например, 'ароматизатор', 'шапка'..."
-            android:layout_margin="8dp"/>
-
-
-      <!--  <EditText
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:background="@drawable/search_view_background"
-            android:drawablePadding="5dp"
-            android:hint="Поик по каталогу..."
-            android:drawableLeft="@drawable/ic_search"
-            android:padding="15dp"
+            app:defaultQueryHint="Например, 'ароматизатор', 'шапка'..."
+            app:iconifiedByDefault="false" />
 
-            />
--->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_rec"
             android:layout_width="match_parent"

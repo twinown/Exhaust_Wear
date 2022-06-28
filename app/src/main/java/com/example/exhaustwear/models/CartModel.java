@@ -3,12 +3,12 @@ package com.example.exhaustwear.models;
 
 public class CartModel {
 
-    String productImg;
-    String productName;
-    String productPrice;
-    String productQuantity;
-    int totalPrice;
-    String documentId;
+    private String productImg;
+    private String productName;
+    private String productPrice;
+    private String productQuantity;
+    private int totalPrice;
+    private String documentId;
 
     public CartModel() {
     }
@@ -21,7 +21,6 @@ public class CartModel {
         this.productQuantity = productQuantity;
         this.totalPrice = totalPrice;
         this.documentId = documentId;
-
     }
 
     public String getDocumentId() {

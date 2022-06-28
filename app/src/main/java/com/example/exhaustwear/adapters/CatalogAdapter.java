@@ -19,15 +19,13 @@ import java.util.List;
 
 public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.ViewHolder> {
 
-    Context context;
-    List<CatalogModel> list;
+    private Context context;
+    private List<CatalogModel> list;
 
     public CatalogAdapter(Context context, List<CatalogModel> list) {
         this.context = context;
         this.list = list;
     }
-
-
 
     @NonNull
     @Override

@@ -9,47 +9,32 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
-import com.example.exhaustwear.models.CartModel;
 import com.example.exhaustwear.R;
-import com.example.exhaustwear.models.CatalogDetailModel;
-import com.example.exhaustwear.models.User;
-import com.example.exhaustwear.views.fragments.cart.CartFragment;
-import com.example.exhaustwear.views.fragments.catalog.StuffDetailFragment;
+import com.example.exhaustwear.models.CartModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.List;
 import java.util.Objects;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
-    Context context;
-    List<CartModel> cartModelList;
-    FirebaseFirestore firebaseFirestore;
-    FirebaseAuth firebaseAuth;
-    ImageView imageView;
+    private Context context;
+    private List<CartModel> cartModelList;
+    private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth firebaseAuth;
+
     public CartAdapter(Context context, List<CartModel> cartModelList) {
         this.context = context;
         this.cartModelList = cartModelList;
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
     }
-
-
 
     @NonNull
     @Override
@@ -64,16 +49,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.totalPrice.setText(String.valueOf(cartModelList.get(position).getTotalPrice()));
         holder.quantity.setText(cartModelList.get(position).getProductQuantity());
 
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceType")
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("price",String.valueOf(cartModelList.get(position).getProductPrice()));
+                bundle.putString("price", String.valueOf(cartModelList.get(position).getProductPrice()));
                 bundle.putString("img", cartModelList.get(position).getProductImg());
-                bundle.putString("description",cartModelList.get(position).getProductName());
-                bundle.putString("name",cartModelList.get(position).getProductName());
+                bundle.putString("description", cartModelList.get(position).getProductName());
+                bundle.putString("name", cartModelList.get(position).getProductName());
                 Navigation.findNavController(view).navigate(R.id.action_cartFragment_to_stuffDetailFragment1, bundle);
             }
         });
@@ -95,7 +79,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                                     notifyDataSetChanged();
                                     Toast.makeText(context, "Удалено из корзины", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(context, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Error" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

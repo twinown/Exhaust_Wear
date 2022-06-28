@@ -10,7 +10,6 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,7 +17,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.exhaustwear.R;
 import com.example.exhaustwear.adapters.CartAdapter;
 import com.example.exhaustwear.models.CartModel;
@@ -33,7 +31,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,22 +39,22 @@ import java.util.Objects;
 
 public class CartFragment extends Fragment {
 
-    FirebaseFirestore firebaseFirestore;
-    FirebaseAuth firebaseAuth;
-    RecyclerView recyclerView;
-    CartAdapter cartAdapter;
-    List<CartModel> cartModelList;
-    ProgressBar progressBar;
-    View view;
-    TextView overTotalAmount;
-    ConstraintLayout constraintLayout1;
-    ConstraintLayout constraintLayout2;
-    RelativeLayout relativeLayout;
-    Button buyNow;
-    DatabaseReference databaseReference;
-    String name;
-    String email;
-    String phone;
+    private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth firebaseAuth;
+    private RecyclerView recyclerView;
+    private CartAdapter cartAdapter;
+    private List<CartModel> cartModelList;
+    private ProgressBar progressBar;
+    private View view;
+    private TextView overTotalAmount;
+    private ConstraintLayout constraintLayout1;
+    private ConstraintLayout constraintLayout2;
+    private RelativeLayout relativeLayout;
+    private Button buyNow;
+    private DatabaseReference databaseReference;
+    private String name;
+    private String email;
+    private String phone;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -108,7 +105,6 @@ public class CartFragment extends Fragment {
 
         return view;
     }
-
 
     private void loadingCart() {
         if (firebaseAuth.getCurrentUser() != null) {
@@ -206,7 +202,8 @@ public class CartFragment extends Fragment {
                         } else
                             Toast.makeText(getContext(), "Error " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
 
-                    } else Toast.makeText(getContext(), "Error " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(getContext(), "Error " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

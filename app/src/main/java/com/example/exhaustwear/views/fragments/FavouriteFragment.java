@@ -32,15 +32,15 @@ import java.util.Objects;
 
 public class FavouriteFragment extends Fragment {
 
-    View view;
-    FirebaseFirestore firebaseFirestore;
-    FirebaseAuth firebaseAuth;
-    RecyclerView recyclerView;
-    FavouriteAdapter favouriteAdapter;
-    List<FavouriteModel> favouriteModelList;
-    ProgressBar progressBar;
-    ConstraintLayout constraintLayout3;
-    ConstraintLayout constraintLayout4;
+    private View view;
+    private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth firebaseAuth;
+    private RecyclerView recyclerView;
+    private FavouriteAdapter favouriteAdapter;
+    private List<FavouriteModel> favouriteModelList;
+    private ProgressBar progressBar;
+    private ConstraintLayout constraintLayout3;
+    private ConstraintLayout constraintLayout4;
 
 
     @Override
@@ -58,12 +58,12 @@ public class FavouriteFragment extends Fragment {
         constraintLayout4 = view.findViewById(R.id.constraint4);
         favouriteModelList = new ArrayList<>();
         favouriteAdapter = new FavouriteAdapter(getActivity(), favouriteModelList);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         // for saving recyclerview position
         favouriteAdapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
         recyclerView.setAdapter(favouriteAdapter);
 
-        //is collection exist ?
+        //is the collection exist ?
         //if true, show cards
         if (firebaseAuth.getCurrentUser() != null) {
             firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
@@ -107,7 +107,6 @@ public class FavouriteFragment extends Fragment {
 
                             }
                         }
-
                     });
         } else visibilityEmpty();
     }

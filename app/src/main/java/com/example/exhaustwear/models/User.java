@@ -1,6 +1,7 @@
 package com.example.exhaustwear.models;
 
 public class User {
+
     private String name;
     private String phone;
     private String email;
@@ -45,4 +46,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

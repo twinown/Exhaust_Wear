@@ -14,12 +14,9 @@ import java.util.List;
 
 public class VpAdapterStuff extends RecyclerView.Adapter<VpAdapterStuff.ViewHolder> {
 
-    Context context;
-    List<VpModelStuff> vpModelStuff;
-    ViewPager2 viewPager2;
-
-
-
+    private Context context;
+    private List<VpModelStuff> vpModelStuff;
+    private ViewPager2 viewPager2;
 
     public VpAdapterStuff(Context context, List<VpModelStuff> vpModelStuff, ViewPager2 viewPager2) {
         this.context = context;
@@ -35,13 +32,9 @@ public class VpAdapterStuff extends RecyclerView.Adapter<VpAdapterStuff.ViewHold
 
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Glide.with(context).load(vpModelStuff.get(position).getImg_url()).into(holder.imageView);
-      /*  if (position == vpModelStuff.size() -2){
-            viewPager2.post(runnable);
-        }*/
     }
 
     @Override
@@ -56,19 +49,5 @@ public class VpAdapterStuff extends RecyclerView.Adapter<VpAdapterStuff.ViewHold
             super(itemView);
             imageView = itemView.findViewById(R.id.container_vp_stuff);
         }
-
     }
-
-    //for infinite slider
- /*   private final Runnable runnable = new Runnable() {
-        @SuppressLint("NotifyDataSetChanged")
-        @Override
-        public void run() {
-            vpModelStuff.addAll(vpModelStuff);
-            notifyDataSetChanged();
-
-        }
-    };*/
-
-
 }

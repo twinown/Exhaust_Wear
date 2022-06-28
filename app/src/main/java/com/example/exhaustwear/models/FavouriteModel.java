@@ -1,14 +1,14 @@
 package com.example.exhaustwear.models;
 
 public class FavouriteModel {
-    String productImg;
-    String productName;
-    String productPrice;
-    String documentId;
+
+    private String productImg;
+    private String productName;
+    private String productPrice;
+    private String documentId;
 
     public FavouriteModel() {
     }
-
 
     public FavouriteModel(String productImg, String productName, String productPrice) {
         this.productImg = productImg;
@@ -48,4 +48,5 @@ public class FavouriteModel {
     public void setDocumentId(String documentId) {
         this.documentId = documentId;
     }
+
 }

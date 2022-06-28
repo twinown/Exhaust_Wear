@@ -9,11 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.example.exhaustwear.R;
 import com.example.exhaustwear.models.FavouriteModel;
@@ -21,18 +19,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.List;
 import java.util.Objects;
 
 public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.ViewHolder> {
-    Context context;
-    List<FavouriteModel> favouriteModelList;
-    FirebaseFirestore firebaseFirestore;
-    FirebaseAuth firebaseAuth;
+
+    private Context context;
+    private List<FavouriteModel> favouriteModelList;
+    private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth firebaseAuth;
 
 
-    public FavouriteAdapter(Context context, List<FavouriteModel>favouriteModelList) {
+    public FavouriteAdapter(Context context, List<FavouriteModel> favouriteModelList) {
         this.context = context;
         this.favouriteModelList = favouriteModelList;
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -43,7 +41,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
     @NonNull
     @Override
     public FavouriteAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-      return new FavouriteAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.favourite_card_detail_item, parent, false));
+        return new FavouriteAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.favourite_card_detail_item, parent, false));
     }
 
     @Override
@@ -57,16 +55,13 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("price",String.valueOf(favouriteModelList.get(position).getProductPrice()));
+                bundle.putString("price", String.valueOf(favouriteModelList.get(position).getProductPrice()));
                 bundle.putString("img", favouriteModelList.get(position).getProductImg());
-                bundle.putString("description",favouriteModelList.get(position).getProductName());
-                bundle.putString("name",favouriteModelList.get(position).getProductName());
+                bundle.putString("description", favouriteModelList.get(position).getProductName());
+                bundle.putString("name", favouriteModelList.get(position).getProductName());
                 Navigation.findNavController(view).navigate(R.id.action_favouriteFragment_to_stuffDetailFragment2, bundle);
             }
         });
-
-
-
 
         //deleting from favourite
         holder.deleteFromFav.setOnClickListener(new View.OnClickListener() {
@@ -85,14 +80,12 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
                                     notifyDataSetChanged();
                                     Toast.makeText(context, "Удалено из избранного", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(context, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Error" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
             }
         });
-
-
     }
 
     @Override
@@ -103,6 +96,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name, price;
         ImageView stuffImage, deleteFromFav;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name_fav_card);

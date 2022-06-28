@@ -1,15 +1,12 @@
 package com.example.exhaustwear.models;
 
 
-
 public class CatalogModel {
 
-    String name;
-    String img_url;
-    String type;
-    String documentId;
-
-
+    private String name;
+    private String img_url;
+    private String type;
+    private String documentId;
 
     public CatalogModel() {
     }
@@ -21,13 +18,13 @@ public class CatalogModel {
 
     }
 
-
     public String getDocumentId() {
         return documentId;
     }
 
     public void setDocumentId(String documentId) {
     }
+
     public String getType() {
         return type;
     }
@@ -51,8 +48,6 @@ public class CatalogModel {
     public void setImg_url(String img_url) {
         this.img_url = img_url;
     }
-
-
 
 
 }

@@ -5,16 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.exhaustwear.R;
 import com.example.exhaustwear.adapters.CatalogDetailAdapter;
 import com.example.exhaustwear.models.CatalogDetailModel;
@@ -23,31 +18,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class CatalogDetailFragment extends Fragment {
 
-    View view;
-    RecyclerView recyclerView;
-    List<CatalogDetailModel> list;
-    CatalogDetailAdapter catalogDetailAdapter;
-    FirebaseFirestore firebaseFirestore;
-    ProgressBar progressBar;
-    String aroma = "aroma";
-    String baseball = "baseball";
-    String bracelets = "bracelets";
-    String toys = "toys";
-    String carpets = "carpets";
-    String tshirts = "tshirts";
-    String caps = "caps";
-    String cups = "cups";
-    String pants = "pants";
-    String japnums = "japnums";
-    View drawable;
-    ImageView imageView;
-
+    private View view;
+    private RecyclerView recyclerView;
+    private List<CatalogDetailModel> list;
+    private CatalogDetailAdapter catalogDetailAdapter;
+    private FirebaseFirestore firebaseFirestore;
+    private ProgressBar progressBar;
 
     @SuppressLint("ResourceType")
     @Override
@@ -68,6 +49,16 @@ public class CatalogDetailFragment extends Fragment {
 
         recyclerView.setAdapter(catalogDetailAdapter);
 
+        String aroma = "aroma";
+        String baseball = "baseball";
+        String bracelets = "bracelets";
+        String toys = "toys";
+        String carpets = "carpets";
+        String tshirts = "tshirts";
+        String caps = "caps";
+        String cups = "cups";
+        String pants = "pants";
+        String japnums = "japnums";
         if (type != null && type.equalsIgnoreCase(aroma)) {
             openDetail(aroma, "NavCategoryDetailed");
         } else if (type != null && type.equalsIgnoreCase(baseball)) {

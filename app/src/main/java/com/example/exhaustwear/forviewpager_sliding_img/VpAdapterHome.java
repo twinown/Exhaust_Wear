@@ -18,9 +18,9 @@ import java.util.List;
 
 public class VpAdapterHome extends RecyclerView.Adapter<VpAdapterHome.ViewHolder> {
 
-    List<VpModelHome> vpModelHomes;
-    ViewPager2 viewPager2;
-    Handler slideHandler = new Handler();
+    private List<VpModelHome> vpModelHomes;
+    private ViewPager2 viewPager2;
+    private Handler slideHandler = new Handler();
 
     public VpAdapterHome(List<VpModelHome> vpModelHomes, ViewPager2 viewPager2) {
         this.vpModelHomes = vpModelHomes;
@@ -34,7 +34,6 @@ public class VpAdapterHome extends RecyclerView.Adapter<VpAdapterHome.ViewHolder
                 LayoutInflater.from(parent.getContext()).inflate(R.layout.vp_container, parent, false)
         );
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -79,7 +78,6 @@ public class VpAdapterHome extends RecyclerView.Adapter<VpAdapterHome.ViewHolder
             super(itemView);
             imageView = itemView.findViewById(R.id.container_vp);
         }
-
     }
 
     //for backLoop slider
@@ -88,7 +86,6 @@ public class VpAdapterHome extends RecyclerView.Adapter<VpAdapterHome.ViewHolder
         @Override
         public void run() {
             viewPager2.setCurrentItem(viewPager2.getCurrentItem() - 1);
-
         }
     };
 

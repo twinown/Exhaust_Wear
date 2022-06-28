@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
+    android:layout_marginStart="10dp"
     android:layout_marginTop="15dp"
-    android:layout_marginRight="5dp"
+    android:layout_marginEnd="5dp"
     android:layout_marginBottom="6dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="4dp">
@@ -45,7 +45,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="Price"
+                        android:text="@string/price"
                         android:textColor="@color/card_background"
                         android:textSize="24sp"
                         android:textStyle="bold"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginLeft="10dp"
-                android:text="Name"
+                android:text="@string/name"
                 android:textColor="@color/card_background"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -87,8 +87,8 @@
                     android:id="@+id/deleteFavourite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_delete_24"
-                    android:layout_alignParentBottom="true"/>
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/ic_baseline_delete_24" />
             </RelativeLayout>
 
         </LinearLayout>

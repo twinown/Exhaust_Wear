@@ -31,11 +31,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
-    Context context;
-    List<SearchModel> list;
-    FirebaseFirestore firebaseFirestore;
-    FirebaseAuth firebaseAuth;
 
+    private Context context;
+    private List<SearchModel> list;
+    private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth firebaseAuth;
 
     public SearchAdapter(Context context, List<SearchModel> list) {
         this.context = context;
@@ -56,7 +56,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     public void onBindViewHolder(@NonNull SearchAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         loadData(position, holder);
 
-
         //checking if collections exist
         if (firebaseAuth.getCurrentUser() == null) {
             loadData(position, holder);
@@ -65,8 +64,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
             checkingCollEx(position, "AddToFavourite", holder, R.drawable.ic_baseline_favorite_green);
             checkingCollEx(position, "AddToCart", holder, R.drawable.ic_baseline_add_shopping_cart_green);
         }
-
-
 
         //packing fields for fragmentStuffDetail
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +74,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
             }
         });
 
-
         holder.addToFavourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,7 +81,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
             }
         });
-
 
         holder.addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +94,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
 
     }
-
 
     @Override
     public int getItemCount() {
@@ -133,10 +127,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         bundle.putString("description", list.get(position).getDescription());
         bundle.putString("size", list.get(position).getSize());
         bundle.putString("name", list.get(position).getName());
-
         Navigation.findNavController(view).navigate(R.id.action_searchFragment_to_stuffDetailFragment, bundle);
     }
-
 
     @SuppressLint("CheckResult")
     private void loadData(int position, SearchAdapter.ViewHolder holder) {
@@ -234,18 +226,15 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
                                                 @Override
                                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                                     if (!task.getResult().isEmpty()) {
-                                                        if (collection.equals("AddToCart")){
+                                                        if (collection.equals("AddToCart")) {
                                                             holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context, id));
-                                                        }else holder.addToFavourite.setImageDrawable(ContextCompat.getDrawable(context, id));
+                                                        } else
+                                                            holder.addToFavourite.setImageDrawable(ContextCompat.getDrawable(context, id));
                                                     }
                                                 }
                                             });
                         }
                     }
                 });
-
-
-
-
     }
 }

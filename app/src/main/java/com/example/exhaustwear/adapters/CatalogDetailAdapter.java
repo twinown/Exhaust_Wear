@@ -32,11 +32,10 @@ import java.util.Objects;
 
 public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdapter.ViewHolder> {
 
-    Context context;
-    List<CatalogDetailModel> list;
-    FirebaseFirestore firebaseFirestore;
-    FirebaseAuth firebaseAuth;
-
+    private Context context;
+    private List<CatalogDetailModel> list;
+    private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth firebaseAuth;
 
     public CatalogDetailAdapter(Context context, List<CatalogDetailModel> list) {
         this.context = context;
@@ -57,7 +56,6 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         loadData(position, holder);
 
-
         //checking if collections exist
         if (firebaseAuth.getCurrentUser() == null) {
             loadData(position, holder);
@@ -66,8 +64,6 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
             checkingCollEx(position, "AddToFavourite", holder, R.drawable.ic_baseline_favorite_green);
             checkingCollEx(position, "AddToCart", holder, R.drawable.ic_baseline_add_shopping_cart_green);
         }
-
-
 
         //packing fields for fragmentStuffDetail
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +74,6 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
             }
         });
 
-
         holder.addToFavourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,7 +81,6 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
 
             }
         });
-
 
         holder.addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,10 +91,7 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
                 addingToCart(position, holder);
             }
         });
-
-
     }
-
 
     @Override
     public int getItemCount() {
@@ -137,7 +128,6 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
         Navigation.findNavController(view).navigate(R.id.action_catalog_detail_Fragment_to_stuffDetailFragment, bundle);
 
     }
-
 
     @SuppressLint("CheckResult")
     private void loadData(int position, ViewHolder holder) {
@@ -222,31 +212,28 @@ public class CatalogDetailAdapter extends RecyclerView.Adapter<CatalogDetailAdap
     }
 
     private void checkingCollEx(int position, String collection, ViewHolder holder, int id) {
-            firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                    .collection(collection).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                        @Override
-                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                            if (!queryDocumentSnapshots.isEmpty()) {
-                                //if in the collection "CurrentUser" already exists chosen item show green cart in the concrete card
-                                firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                                        .collection(collection).whereEqualTo("productName", list.get(position).getName())
-                                        .get().addOnCompleteListener(
-                                                new OnCompleteListener<QuerySnapshot>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                        if (!task.getResult().isEmpty()) {
-                                                            if (collection.equals("AddToCart")){
-                                                                holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context, id));
-                                                            }else holder.addToFavourite.setImageDrawable(ContextCompat.getDrawable(context, id));
-                                                        }
+        firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
+                .collection(collection).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            //if in the collection "CurrentUser" already exists chosen item show green cart in the concrete card
+                            firebaseFirestore.collection("CurrentUser").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
+                                    .collection(collection).whereEqualTo("productName", list.get(position).getName())
+                                    .get().addOnCompleteListener(
+                                            new OnCompleteListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                    if (!task.getResult().isEmpty()) {
+                                                        if (collection.equals("AddToCart")) {
+                                                            holder.addToCart.setImageDrawable(ContextCompat.getDrawable(context, id));
+                                                        } else
+                                                            holder.addToFavourite.setImageDrawable(ContextCompat.getDrawable(context, id));
                                                     }
-                                                });
-                            }
+                                                }
+                                            });
                         }
-                    });
-
-
-
-
+                    }
+                });
     }
 }

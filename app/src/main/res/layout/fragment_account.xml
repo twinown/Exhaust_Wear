@@ -20,7 +20,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginStart="50dp"
-        android:text="Профиль "
+        android:text="@string/profile"
         android:textAllCaps="true"
         android:textSize="28sp"
         android:textStyle="bold" />
@@ -29,9 +29,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:textSize="20sp"
-        android:text="Имя"
+        android:text="@string/name_word"
        />
 
     <EditText
@@ -52,9 +52,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:textSize="20sp"
-        android:text="E-mail"/>
+        android:text="@string/e_mail"/>
 
     <EditText
         android:id="@+id/correct_email"
@@ -73,9 +73,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:textSize="20sp"
-        android:text="Телефон"/>
+        android:text="@string/telephone_word"/>
 
     <EditText
         android:id="@+id/correct_phone"
@@ -99,7 +99,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/background_button"
-        android:text="Изменить"
+        android:text="@string/change_word"
         android:textColor="@color/greys"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -116,7 +116,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/background_button"
-        android:text="Выйти"
+        android:text="@string/exit_word"
         android:textColor="@color/greys"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

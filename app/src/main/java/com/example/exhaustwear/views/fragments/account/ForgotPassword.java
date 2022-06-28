@@ -1,8 +1,6 @@
 package com.example.exhaustwear.views.fragments.account;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.example.exhaustwear.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -44,10 +46,10 @@ public class ForgotPassword extends Fragment {
 
     private void resetPassword() {
         String email = emailEdit.getText().toString().trim();
-        if (email.isEmpty()){
+        if (email.isEmpty()) {
             Toast.makeText(getActivity(), "Поле не должно быть пустым", Toast.LENGTH_SHORT).show();
             return;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             emailEdit.setError("Введите корректный E-mail");
             emailEdit.requestFocus();
             return;
@@ -57,10 +59,10 @@ public class ForgotPassword extends Fragment {
         firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     Toast.makeText(getActivity(), "На Вашу почту отправлено письмо, следуйте инструкциям", Toast.LENGTH_LONG).show();
-                progressBar.setVisibility(View.GONE);
-                }else {
+                    progressBar.setVisibility(View.GONE);
+                } else {
                     Toast.makeText(getActivity(), "Попробуйте ещё раз", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -2,18 +2,18 @@ package com.example.exhaustwear.models;
 
 
 public class CatalogDetailModel {
-    String name;
-    String img_url, img_url2, img_url3, img_url4;
-    String price;
-    String type;
-    String group;
-    String description;
-    String size;
-    String documentId;
+
+    private String name;
+    private String img_url, img_url2, img_url3, img_url4;
+    private String price;
+    private String type;
+    private String group;
+    private String description;
+    private String size;
+    private String documentId;
 
     public CatalogDetailModel() {
     }
-
 
     public CatalogDetailModel(String name, String img_url, String img_url2, String img_url3, String img_url4,
                               String price, String type, String group, String description, String size, String documentId) {
@@ -117,6 +117,5 @@ public class CatalogDetailModel {
     public void setGroup(String group) {
         this.group = group;
     }
-
 
 }

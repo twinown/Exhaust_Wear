@@ -13,10 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class PlacedOrderFragment extends Fragment {
 
-    FirebaseAuth firebaseAuth;
-    FirebaseFirestore firebaseFirestore;
-    View view;
-
+    private View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
