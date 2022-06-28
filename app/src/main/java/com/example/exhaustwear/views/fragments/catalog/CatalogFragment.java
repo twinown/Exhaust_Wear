@@ -3,6 +3,7 @@ package com.example.exhaustwear.views.fragments.catalog;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -52,21 +54,13 @@ public class CatalogFragment extends Fragment {
     ImageView imageView;
     LinearLayout linearLayout;
 
-
-   /* private List<CatalogDetailModel> catalogDetailModelList;
-    private RecyclerView recyclerViewSearch;
-    private CatalogDetailAdapter catalogDetailAdapter;
-    SearchView searchView;
-*/
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-
         Toolbar toolbar = requireActivity().findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(null);
-
         view = inflater.inflate(R.layout.fragment_catalog, container, false);
         firebaseFirestore = FirebaseFirestore.getInstance();
         progressBar = view.findViewById(R.id.progress_bar);
@@ -79,7 +73,6 @@ public class CatalogFragment extends Fragment {
         catalogAdapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
 
         recyclerView.setAdapter(catalogAdapter);
-
         firebaseFirestore.collection("NavCategory")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -140,7 +133,8 @@ imageView.setOnClickListener(new View.OnClickListener() {
         return view;
     }
 
-  /*  private void searchProduct(String name) {
+
+    /*  private void searchProduct(String name) {
 
         if (!name.isEmpty()) {
             firebaseFirestore.collection("NavCategoryDetailed").whereEqualTo("type", name).

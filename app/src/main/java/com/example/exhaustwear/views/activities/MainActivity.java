@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.exhaustwear.R;
@@ -18,7 +19,6 @@ import com.example.exhaustwear.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-
 
 
     @SuppressLint({"NonConstantResourceId", "ResourceType"})
@@ -35,15 +35,16 @@ public class MainActivity extends AppCompatActivity {
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
 
-         NavigationUI.setupWithNavController(binding.toolbar, navController);
+        NavigationUI.setupWithNavController(binding.toolbar, navController);
+
        /* AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_home,R.id.navigation_catalog,
-                R.id.navigation_account,R.id.navigation_favourite,  R.id.navigation_basket).build();
+                R.id.navigation_account,R.id.navigation_favourite,  R.id.navigation_cart).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);*/
+
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
 
 
     }
-
 
 
     //putting the icons in the top toolbar
@@ -57,19 +58,18 @@ public class MainActivity extends AppCompatActivity {
     //for searching
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-  //    if (item.getItemId()==R.id.search){
-          //  Toast.makeText(this, "Do it later", Toast.LENGTH_SHORT).show();
-       //   Navigation.findNavController(this, R.id.navigation_catalog).navigate(R.id.action_CatalogFragment_to_catalogSearchFragment);
+        //    if (item.getItemId()==R.id.search){
+        //  Toast.makeText(this, "Do it later", Toast.LENGTH_SHORT).show();
+        //   Navigation.findNavController(this, R.id.navigation_catalog).navigate(R.id.action_CatalogFragment_to_catalogSearchFragment);
        /*   FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
           fragmentTransaction.add(R.id.nav_host_container, new SearchFragment()).hide(new SearchFragment()).show(new SearchFragment()).addToBackStack("").commit();*/
-       //   fragmentTransaction.replace(, new SearchFragment()).addToBackStack("").commit();
-  //    }
+        //   fragmentTransaction.replace(, new SearchFragment()).addToBackStack("").commit();
+        //    }
         return super.onOptionsItemSelected(item);
     }
 
 
-
-    }
+}
 
 
 

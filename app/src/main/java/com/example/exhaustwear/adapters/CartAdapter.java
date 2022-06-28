@@ -41,7 +41,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     List<CartModel> cartModelList;
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
-   ImageView imageView;
+    ImageView imageView;
     public CartAdapter(Context context, List<CartModel> cartModelList) {
         this.context = context;
         this.cartModelList = cartModelList;
