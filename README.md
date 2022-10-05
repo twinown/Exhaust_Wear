@@ -7,7 +7,7 @@ Single-Activity app (за исключением сплеш-скрина) по �
 
 -NavigationComponent
 
--BottomNavigationView с пять. экранами
+-BottomNavigationView с пятью экранами
 
 -Fragments
 
