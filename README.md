@@ -5,7 +5,8 @@ Single-Activity app (за исключением сплеш-скрина) по �
 
 -SplashScreen
 
-![image](https://user-images.githubusercontent.com/78624195/194421487-7eb8cd77-8ee1-4a92-a25c-5e277f3747d7.png)
+![image](https://user-images.githubusercontent.com/78624195/194423702-b73eb47d-cc23-4421-8358-e0ac89dfa7b9.png)
+
 
 -ViewPager(auto-image-slider)
 
