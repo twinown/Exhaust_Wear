@@ -53,6 +53,8 @@ Single-Activity app (за исключением сплеш-скрина) по �
 
 ![image](https://user-images.githubusercontent.com/78624195/194422018-6bfd7378-92db-45be-94ce-32c2544eb14f.png)
 
+![image](https://user-images.githubusercontent.com/78624195/194425606-bce8c689-a214-4675-aee2-19e779565e33.png)
+
 ![image](https://user-images.githubusercontent.com/78624195/194423278-93a85487-5f7b-45ca-a025-b1c48fc5f010.png)
 
 ![image](https://user-images.githubusercontent.com/78624195/194423366-2bfe9602-e404-430a-b6a1-b977fc4567db.png)
