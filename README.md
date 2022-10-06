@@ -35,7 +35,8 @@ Single-Activity app (за исключением сплеш-скрина) по �
 
 ![image](https://user-images.githubusercontent.com/78624195/194424584-675fa672-e0b5-4d4a-9d53-c19a830b94d2.png)
 
-![image](https://user-images.githubusercontent.com/78624195/194424954-8dc0858c-ec9a-4cef-99df-2ac47dd6338b.png)
+![image](https://user-images.githubusercontent.com/78624195/194425435-c018715f-b17f-4e7d-af8a-2502aa1353f1.png)
+
 
 
 -Adapters
