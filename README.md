@@ -5,25 +5,32 @@ Single-Activity app (за исключением сплеш-скрина) по �
 
 -SplashScreen
 
-![Screenshot_20221007-000542](https://user-images.githubusercontent.com/78624195/194418918-6bef19eb-d1f2-46b9-9ace-83357095e3e7.jpg)
+![image](https://user-images.githubusercontent.com/78624195/194421487-7eb8cd77-8ee1-4a92-a25c-5e277f3747d7.png)
 
+-ViewPager(auto-image-slider)
 
--ViewPager
+![image](https://user-images.githubusercontent.com/78624195/194421738-f24813ff-daeb-418b-b2bc-76cb59ca502f.png)
+
+![image](https://user-images.githubusercontent.com/78624195/194421788-f4dcdca1-d8ae-4eae-a2e5-c3ea4cf73327.png)
 
 -NavigationComponent
 
 ![image](https://user-images.githubusercontent.com/78624195/194419189-4aa10932-38c0-4109-9b66-ab8a46f3ff07.png)
 
-
 ![image](https://user-images.githubusercontent.com/78624195/194419285-81359b8b-0b68-4845-9a74-280606d5180d.png)
-
 
 -BottomNavigationView с пятью экранами
 
-![Screenshot_20221007-000647__01](https://user-images.githubusercontent.com/78624195/194419361-9851d678-ceac-47d4-aa0b-12d447708d73.jpg)
+![image](https://user-images.githubusercontent.com/78624195/194420132-9ca1d573-4997-439e-8a91-b066a4143a41.png)
 
 
 -Fragments
+
+![image](https://user-images.githubusercontent.com/78624195/194422134-97f8c3e2-bb80-4ad1-a490-375bff49132d.png)
+
+-CardView
+
+![image](https://user-images.githubusercontent.com/78624195/194422563-32ecb68e-30d4-4593-b1c5-86ed1a7d4419.png)
 
 -Adapters
 
@@ -33,7 +40,11 @@ Single-Activity app (за исключением сплеш-скрина) по �
 
 База данных/Аутентификация - Firebase.
 
+![image](https://user-images.githubusercontent.com/78624195/194421976-f16d5715-16d9-4ea3-8f6c-a5aa64ec3f2e.png)
+
 В приложении можно зарегистрироваться (и нужно для добавления в корзину/избранное), при желании - сменить пароль и оформить заказ.
+
+![image](https://user-images.githubusercontent.com/78624195/194422018-6bfd7378-92db-45be-94ce-32c2544eb14f.png)
 
 
 
