@@ -24,7 +24,7 @@ Single-Activity app (за исключением сплеш-скрина) по �
 ![image](https://user-images.githubusercontent.com/78624195/194420132-9ca1d573-4997-439e-8a91-b066a4143a41.png)
 
 
--Fragments
+-Fragments/RecyclerView
 
 ![image](https://user-images.githubusercontent.com/78624195/194422134-97f8c3e2-bb80-4ad1-a490-375bff49132d.png)
 
