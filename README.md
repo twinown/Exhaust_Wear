@@ -4,6 +4,7 @@ Single-Activity app (за исключением сплеш-скрина) по �
 Приложение включает следующие основные программные компоненты:
 
 -SplashScreen
+![image](https://user-images.githubusercontent.com/78624195/194418380-7d0baf37-8737-41dd-af19-0948fdfd9d2d.png)
 
 -NavigationComponent
 
