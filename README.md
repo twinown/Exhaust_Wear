@@ -9,6 +9,7 @@ Single-Activity app (за исключением сплеш-скрина) по �
 
 
 -ViewPager(auto-image-slider)
+Две фотографии являются implicit intent-ами
 
 ![image](https://user-images.githubusercontent.com/78624195/194421738-f24813ff-daeb-418b-b2bc-76cb59ca502f.png)
 
